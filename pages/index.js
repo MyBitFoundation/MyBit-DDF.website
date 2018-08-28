@@ -1,6 +1,5 @@
 import Layout from '../index.js'
-import 'antd/lib/button/style';
-import Button from 'antd/lib/button';
+import Header from '../components/Header'
 
 import styled from 'styled-components'
 
@@ -11,9 +10,6 @@ const Title = styled.h1`
 
 export default () => (
   <Layout>
-    <Title>This awesome styled title!</Title>
-    <Button>
-      And this button!
-    </Button>
+    <Header/>
   </Layout>
 )

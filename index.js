@@ -9,6 +9,8 @@ export default ({ children }) =>
     </Head>
     <style jsx global>{`
       body {
+        margin: 0px 0px;
+        padding: 0px 0px;
       }
     `}</style>
     {children}
