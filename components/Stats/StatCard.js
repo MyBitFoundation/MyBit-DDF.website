@@ -11,7 +11,7 @@ const StatCard = ({stat}) => {
     <StyledStatCard>
       <StyledTitle>{stat.name}</StyledTitle>
       <StyledLoadingPlaceholder>
-        <ReactPlaceholder type='textRow' ready={false} color='#E0E0E0' showLoadingAnimation style={{width: stat.loadingSize + "px", height: "21px"}}>
+        <ReactPlaceholder type='textRow' ready={stat.value ? true : false} color='#E0E0E0' showLoadingAnimation style={{width: stat.loadingSize + "px", height: "21px"}}>
           <StyledValue>{stat.value}</StyledValue>
         </ReactPlaceholder>
       </StyledLoadingPlaceholder>
