@@ -27,10 +27,9 @@ const statsDetails = [{
 
 const getStat = stat => <StatCard stat={stat} />
 
-const Stats = props => (
+const Stats = props =>
   <StyledStats>
     {statsDetails.map(getStat)}
   </StyledStats>
-)
 
 export default Stats;
