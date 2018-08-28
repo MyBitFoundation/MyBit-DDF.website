@@ -4,9 +4,9 @@ import StyledNavigationBar from './StyledNavigationBar';
 import MenuItem from '../MenuItem';
 import Icon from '../Icon';
 import SubMenu from '../SubMenu';
-const MenuItemGroup = Menu.ItemGroup;
 import 'antd/lib/menu/style';
 import { navigationItems } from '../../constants';
+const MenuItemGroup = Menu.ItemGrou;
 
 export default class NavigationBar extends React.Component{
 
@@ -29,8 +29,8 @@ export default class NavigationBar extends React.Component{
   }
 
   getSubmenuItem = (item) => {
-    const iconRight = item.iconRight ? <Icon type={item.iconRight} isRight />: null;
-    const iconLeft = item.iconLeft ? <Icon type={item.iconLeft} />: null;
+    const iconRight = item.iconRight && <Icon type={item.iconRight} isRight />;
+    const iconLeft = item.iconLeft && <Icon type={item.iconLeft} />;
     const subItems = item.subNavigation.map(subItem => (
       <Menu.Item key={subItem.name}>{subItem.name}</Menu.Item>
     ));
@@ -42,14 +42,9 @@ export default class NavigationBar extends React.Component{
     )
   }
 
-  getMenu = (item) => {
-    if(item.subNavigation){
-      return this.getSubmenuItem(item);
-    }
-    else{
-      return this.getMenuItem(item);
-    }
-  }
+  getMenu = (item) =>
+    item.subNavigation ?
+      this.getSubmenuItem(item) : this.getMenuItem(item);
 
   render() {
     return (
@@ -59,9 +54,7 @@ export default class NavigationBar extends React.Component{
           selectedKeys={[this.state.current]}
           mode="horizontal"
         >
-        {navigationItems.map(item => {
-          return this.getMenu(item);
-        })}
+        {navigationItems.map(this.getMenu)}
         </Menu>
       </StyledNavigationBar>
     );
