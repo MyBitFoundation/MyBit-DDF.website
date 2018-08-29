@@ -7,10 +7,6 @@ const SubMenu = styled(SubMenuAnt)`
 
   .ant-menu-submenu-title{
     padding: 0px 0px;
-
-    &:hover{
-      color: #ffffff !important;
-    }
   }
 `;
 

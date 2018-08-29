@@ -8,10 +8,6 @@ const StyledNavigationBar = styled.div`
 
   li{
     font-size: 16px;
-
-    &:hover{
-      color: #ffffff !important;
-    }
   }
 `;
 
