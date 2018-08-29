@@ -3,7 +3,10 @@ import StyledBounties from './StyledBounties';
 import StyledHeader from './StyledHeader';
 import StyledSubHeader from './StyledSubHeader';
 import StyledCategories from './StyledCategories';
+import StyledFilters from './StyledFilters';
 import Menu from '../Menu';
+import Tag from '../Tag';
+import Constants from '../Constants';
 
 const categories = [{
   name: "Development",
@@ -33,6 +36,14 @@ const Bounties = ({}) => (
         items={categories}
       />
     </StyledCategories>
+    <StyledFilters>
+      {categories[0].filters.map(filter => (
+        <Tag
+        constants={Constants}
+        checked
+        >{filter}</Tag>
+      ))}
+    </StyledFilters>
   </StyledBounties>
 )
 
