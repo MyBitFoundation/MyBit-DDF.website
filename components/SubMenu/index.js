@@ -3,7 +3,15 @@ import { Menu } from 'antd';
 const SubMenuAnt = Menu.SubMenu;
 
 const SubMenu = styled(SubMenuAnt)`
-  margin: 0px 5px;
+  margin-right: 50px;
+
+  .ant-menu-submenu-title{
+    padding: 0px 0px;
+
+    &:hover{
+      color: #ffffff !important;
+    }
+  }
 `;
 
 export default SubMenu;
