@@ -9,6 +9,12 @@ export default ({ children }) =>
       <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
     </Head>
     <style jsx global>{`
+      @font-face {
+          font-family: 'Gilroy';
+          src: url('static/gilroy-extrabold.otf') format('opentype');
+          font-weight: bold;
+      }
+
       body {
         font-family: 'Roboto', sans-serif;
         -moz-font-feature-settings: 'kern';

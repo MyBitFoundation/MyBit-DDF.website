@@ -11,6 +11,20 @@ const Constants = {
     backgroundGradientHorizontal: 'linear-gradient(62deg, #001358, #125ac4);',
     backgroundGradientVertical: 'linear-gradient(to top, #001358, #125ac4);',
   },
+  tags:{
+    checkedState: {
+      color: "#ffffff",
+      backgroundColor: blue,
+    },
+    uncheckedState: {
+      backgroundColor: "transparent",
+      borderColor: "transparent",
+      color: "rgba(0, 0, 0, 0.65)",
+    },
+    hoverState: {
+      color: blue,
+    }
+  },
   buttons:{
     primary:{
       green: {

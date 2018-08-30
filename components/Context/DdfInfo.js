@@ -22,7 +22,9 @@ export default class DdfInfo extends React.Component {
       }, {
         name: "No. of Contributors",
         loadingSize: "50"
-      }]
+      }],
+      selectedCategory: "Development",
+      selectedFilter: "None",
     }
   }
 
