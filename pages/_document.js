@@ -13,8 +13,13 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>My page</title>
+          <title>Decentralized Development Fund</title>
           {this.props.styleTags}
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+            rel="stylesheet"
+            type="text/css"
+          />
         </Head>
         <body>
           <Main />

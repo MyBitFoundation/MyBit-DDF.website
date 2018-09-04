@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Menu as MenuAnt } from 'antd';
 import MenuItem from '../MenuItem';
 import Icon from '../Icon';
@@ -34,14 +35,15 @@ export default class Menu extends React.Component{
       this.getSubmenuItem(item) : this.getMenuItem(item);
 
   render(){
-    const {onClick, items, selectedKeys, mode} = this.props;
+    const {onClick, items, selectedKeys, mode, className, styling} = this.props;
 
     return(
-      <StyledMenu>
+      <StyledMenu styling={styling}>
         <MenuAnt
           onClick={onClick}
           selectedKeys={selectedKeys}
           mode={mode}
+          className={className}
         >
           {items.map(this.getMenu)}
         </MenuAnt>
@@ -49,3 +51,12 @@ export default class Menu extends React.Component{
     )
   }
 }
+
+Menu.propTypes = {
+  styling: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  selectedKeys: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  mode: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+};
