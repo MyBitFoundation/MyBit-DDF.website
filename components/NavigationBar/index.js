@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import StyledNavigationBar from './StyledNavigationBar';
 import Menu from '../Menu';
 import Img from '../Img';
-import { navigationItems, mobileMenu } from '../../constants';
+import { NavigationItems, MobileMenu } from '../../constants';
 import SidebarMobile from './SidebarMobile';
 
 export default class NavigationBar extends React.Component{
@@ -23,7 +23,7 @@ export default class NavigationBar extends React.Component{
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}
           mode="horizontal"
-          items={navigationItems}
+          items={NavigationItems}
           styling={this.props.styling}
           className="navigation--is-desktop"
         />
@@ -40,7 +40,7 @@ export default class NavigationBar extends React.Component{
       <SidebarMobile
         open={this.props.sidebarOpen}
         closePopup={this.props.handleClickMobileMenu}
-        links={mobileMenu}
+        links={MobileMenu}
       />
 
       </StyledNavigationBar>

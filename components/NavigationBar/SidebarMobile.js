@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import classNames from 'classnames'
 import StyledMobileMenu from './StyledMobileMenu';
 import StyledIconList from './StyledIconList';
-import { socialIcons } from './socialIcons';
+import { SocialIcons } from '../../constants';
 
 const SidebarMobile = ({links, open, closePopup}) => {
 
@@ -19,7 +19,7 @@ const SidebarMobile = ({links, open, closePopup}) => {
           })
         }
 
-          target={link.external ? "_blank" : ""}
+          target={link.external && "_blank"}
           rel="noopener noreferrer"
         >
           {link.text}
@@ -28,10 +28,12 @@ const SidebarMobile = ({links, open, closePopup}) => {
     })
 
   const socialToRender = (
-    <StyledIconList>
+    <StyledIconList
+      socialIcons={SocialIcons}
+    >
       <div className="IconList">
       {
-        socialIcons.map(icon => {
+        SocialIcons.map(icon => {
           return (
             <a
               key={icon.name}

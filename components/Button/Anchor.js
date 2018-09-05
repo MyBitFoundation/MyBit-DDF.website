@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const A = styled.a`
+const Anchor = styled.a`
     display: block;
     width: max-content;
 `;
 
-export default A;
+export default Anchor;

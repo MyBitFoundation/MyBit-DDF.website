@@ -12,18 +12,7 @@ import Menu from '../../Menu';
 import Switch from '../../Switch';
 import Filter from '../../Filter';
 import Dropdown from '../../Dropdown';
-
-const categories = [{
-  name: "Development",
-  filters: ["Front-End", "Smart Contracts", "APIs", "Debugging", "Other"],
-}, {
-  name: "Design",
-  filters: ["Sketch", "Photoshop"]
-}, {
-  name: "Marketing",
-  filters: ["Market this", "Market that"],
-}];
-
+import { Categories } from '../../../constants';
 
 const Header = ({styling}) => (
     <div>
@@ -38,7 +27,7 @@ const Header = ({styling}) => (
           onClick={() => {}}
           selectedKeys={["Development"]}
           mode="horizontal"
-          items={categories}
+          items={Categories}
           className="categories-desktop"
           styling={styling.menu}
         />
@@ -46,13 +35,13 @@ const Header = ({styling}) => (
           onClick={() => {}}
           selectedKeys={["Development"]}
           mode="vertical"
-          items={categories}
+          items={Categories}
           className="categories-mobile"
           styling={styling.menu}
         />
       </StyledCategories>
       <StyledFilters>
-        {categories[0].filters.map(filter => (
+        {Categories[0].filters.map(filter => (
           <Filter
             styling={styling.filters}
             checked

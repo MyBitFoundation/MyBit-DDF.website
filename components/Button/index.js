@@ -11,17 +11,17 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Tooltip from 'antd/lib/tooltip';
 import StyledButton from './StyledButton';
-import A from './A';
+import Anchor from './Anchor';
 import 'antd/lib/tooltip/style';
 
 function Button({ children, size, styling, handleRoute, linkTo, isActive, href, hasTooltip, tooltipTitle, pointArrowAtCenter, tooltipPlacement, disabled = false}) {
   // Render an anchor tag
   let button = (
-    <A href={href} target='_blank' rel='noopener noreferrer'>
+    <Anchor href={href} target='_blank' rel='noopener noreferrer'>
       <StyledButton size={size} styling={styling} disabled={disabled}>
         {Children.toArray(children)}
       </StyledButton>
-    </A>
+    </Anchor>
   );
 
   // If the Button has a handleRoute prop, we want to render a button

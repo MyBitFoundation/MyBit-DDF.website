@@ -7,7 +7,7 @@ import Img from '../Img';
 import StyledIcon from './StyledIcon';
 import StyledRow from './StyledRow';
 import StyledColumn from './StyledColumn';
-import A from './A';
+import Anchor from './Anchor';
 
 const getRowIcon = (src, srcHover, alt, styling) => {
   return (
@@ -47,9 +47,9 @@ const handleColumn = section =>
       }
       else if(content.name && content.linkTo && content.external){
         return(
-          <A key={content.linkTo} href={content.linkTo} target='_blank' rel='noopener noreferrer' styling={content.styling || {}}>
+          <Anchor key={content.linkTo} href={content.linkTo} target='_blank' rel='noopener noreferrer' styling={content.styling || {}}>
             {content.name}
-          </A>
+          </Anchor>
         )
       }
       else if(content.name && content.linkTo){

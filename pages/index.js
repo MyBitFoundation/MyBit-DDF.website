@@ -11,7 +11,7 @@ import Pagination from '../components/Pagination';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
 import StyledPagination from './StyledPagination';
 import Footer from '../components/Footer';
-import { footer } from '../constants';
+import { Footer as FooterDetails } from '../constants';
 
 export default class Home extends React.Component{
 
@@ -68,7 +68,7 @@ export default class Home extends React.Component{
             </StyledAppWrapper>
             <Footer
               styling={Theme.footer}
-              footerDetails={footer}
+              footerDetails={FooterDetails}
             />
         </Layout>
       </DdfInfo>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { generateIconsCss } from './socialIcons';
+import { GenerateIconsCss } from '../../utils/';
 
 const StyledIconList = styled.div`
   .IconList{
@@ -16,7 +16,7 @@ const StyledIconList = styled.div`
     flex-wrap: wrap;
     width: 100%;
 
-    ${generateIconsCss()}
+    ${props => GenerateIconsCss(props.socialIcons)}
 
     .socialIcon__wrapper{
       width: 50px;
