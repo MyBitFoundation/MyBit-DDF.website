@@ -6,9 +6,14 @@ export default ({ children }) =>
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta charSet='utf-8' />
       <link rel='stylesheet' href='/_next/static/style.css' />
-      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
     </Head>
     <style jsx global>{`
+      @font-face {
+          font-family: 'Gilroy';
+          src: url('static/gilroy-extrabold.otf') format('opentype');
+          font-weight: bold;
+      }
+
       body {
         font-family: 'Roboto', sans-serif;
         -moz-font-feature-settings: 'kern';

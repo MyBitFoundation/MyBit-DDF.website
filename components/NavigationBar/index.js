@@ -1,15 +1,11 @@
-import React from 'react';
-import { Menu } from 'antd';
+import PropTypes from 'prop-types';
 import StyledNavigationBar from './StyledNavigationBar';
-import MenuItem from '../MenuItem';
-import Icon from '../Icon';
-import SubMenu from '../SubMenu';
-import 'antd/lib/menu/style';
-import { navigationItems } from '../../constants';
-const MenuItemGroup = Menu.ItemGrou;
+import Menu from '../Menu';
+import Img from '../Img';
+import { NavigationItems, MobileMenu } from '../../constants';
+import SidebarMobile from './SidebarMobile';
 
 export default class NavigationBar extends React.Component{
-
   state = {
     current: 'Developer',
   }
@@ -20,32 +16,6 @@ export default class NavigationBar extends React.Component{
     })
   }
 
-  getMenuItem = (item) => {
-    return (
-      <MenuItem key={item.name}>
-        {item.name}
-      </MenuItem>
-    )
-  }
-
-  getSubmenuItem = (item) => {
-    const iconRight = item.iconRight && <Icon type={item.iconRight} isRight />;
-    const iconLeft = item.iconLeft && <Icon type={item.iconLeft} />;
-    const subItems = item.subNavigation.map(subItem => (
-      <Menu.Item key={subItem.name}>{subItem.name}</Menu.Item>
-    ));
-
-    return(
-      <SubMenu key={item.name} title={<span>{iconLeft}{item.name}{iconRight}</span>}>
-        {subItems}
-      </SubMenu>
-    )
-  }
-
-  getMenu = (item) =>
-    item.subNavigation ?
-      this.getSubmenuItem(item) : this.getMenuItem(item);
-
   render() {
     return (
       <StyledNavigationBar>
@@ -53,10 +23,33 @@ export default class NavigationBar extends React.Component{
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}
           mode="horizontal"
+          items={NavigationItems}
+          styling={this.props.styling}
+          className="navigation--is-desktop"
+        />
+        <div
+          className="hamburger-button"
         >
-        {navigationItems.map(this.getMenu)}
-        </Menu>
+          <a onClick={() => this.props.handleClickMobileMenu(true)}>
+            <Img
+              src={"static/menu-icon.svg"}
+              alt="Mobile menu button"
+            />
+          </a>
+        </div>
+      <SidebarMobile
+        open={this.props.sidebarOpen}
+        closePopup={this.props.handleClickMobileMenu}
+        links={MobileMenu}
+      />
+
       </StyledNavigationBar>
     );
   }
 }
+
+NavigationBar.propTypes = {
+  styling: PropTypes.object.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired,
+  handleClickMobileMenu: PropTypes.func.isRequired,
+};

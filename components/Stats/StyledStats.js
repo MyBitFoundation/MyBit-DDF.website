@@ -6,6 +6,13 @@ const StyledStats = styled.div`
   align-items: center;
   justify-content: center;
   top: -50px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 850px) {
+    display: none;
+  }
+
 `;
 
 export default StyledStats;
