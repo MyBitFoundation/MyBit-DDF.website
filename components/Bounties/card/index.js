@@ -29,20 +29,24 @@ const getTimeLabel = (time) =>
     {GetTimeAgo(time)}
   </StyledCardTime>
 
-const Card = ({name, labels, repoName, repoUrl, value, creationTime, issueUrl, styling}) =>
+const Card = ({title, labels, repoName, repoUrl, value, createdAt, issueUrl, styling}) =>
   <StyledCard>
     <StyledHeader>
       <div>
         <StyledCardTitle>
-          {name}
+          {title}
         </StyledCardTitle>
         {generateLabels(labels)}
       </div>
       <div>
-        {getTimeLabel(creationTime)}
+        {getTimeLabel(createdAt)}
       </div>
     </StyledHeader>
-    <StyledRepoName>
+    <StyledRepoName
+      href={repoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {repoName}
     </StyledRepoName>
     <StyledFooter>
@@ -58,7 +62,7 @@ const Card = ({name, labels, repoName, repoUrl, value, creationTime, issueUrl, s
         <Button
           styling={styling.primary.blue}
           size="large"
-          href="/placeholder"
+          href={issueUrl}
         >
           Accept Challenge
       </Button>
@@ -68,7 +72,7 @@ const Card = ({name, labels, repoName, repoUrl, value, creationTime, issueUrl, s
 
 Card.propTypes = {
   styling: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   repoName: PropTypes.string.isRequired,
   repoUrl: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,

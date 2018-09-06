@@ -18,7 +18,6 @@ export default class Home extends React.Component{
   state = {
     sideBar: false,
     currentPage: 1,
-    loadingBounties: false,
   }
 
   handleClick = (e) => {
@@ -48,22 +47,34 @@ export default class Home extends React.Component{
                 )}
               </DdfInfoContext.Consumer>
               <StyledPageContentWrapper>
-                <Bounties
-                  styling={Theme}
-                  loading={loadingBounties}
-                />
-                {!loadingBounties &&
-                  <StyledPagination>
-                    <Pagination
-                      onChange={(currentPage) => this.setState({currentPage: currentPage - 1})}
-                      total={100}
-                      current={1}
-                      pageSize={15}
-                      defaultCurrent={1}
-                      styling={Theme.pagination}
+                <DdfInfoContext.Consumer>
+                {props => (
+                  <div>
+                    <Bounties
+                      styling={Theme}
+                      issues={props.issues}
+                      categories={props.categories}
+                      selectedCategory={props.selectedCategory}
+                      setCategory={props.setCategory}
+                      handleClickedFilter={props.handleClickedFilter}
+                      showCompletedTasks={props.showCompletedTasks}
+                      handleShowCompletedTasks={props.handleShowCompletedTasks}
                     />
-                  </StyledPagination>
-                }
+                    {props.issues &&
+                      <StyledPagination>
+                        <Pagination
+                          onChange={(currentPage) => this.setState({currentPage: currentPage - 1})}
+                          total={100}
+                          current={1}
+                          pageSize={15}
+                          defaultCurrent={1}
+                          styling={Theme.pagination}
+                        />
+                      </StyledPagination>
+                    }
+                  </div>
+                )}
+                </DdfInfoContext.Consumer>
               </StyledPageContentWrapper>
             </StyledAppWrapper>
             <Footer
