@@ -75,7 +75,11 @@ export default class DdfInfo extends React.Component {
         processedIssues[category].issues.push(issue);
       }
       issue.labels.forEach(label => {
-        if(processedIssues[category].filters[label] === undefined){
+        //if the user has toggled the filter off before then let it be
+        if(this.state.issues && this.state.issues[category] && this.state.isssues[category].filters[label] === false){
+          processedIssues[category].filters[label] = false;
+        }
+        else if(processedIssues[category].filters[label] === undefined){
           //filters always start off as checked
           processedIssues[category].filters[label] = true;
         }
@@ -102,7 +106,7 @@ export default class DdfInfo extends React.Component {
 
 async getCommentsOfIssue(repoName, number){
   return new Promise(async (resolve, reject) => {
-    axios.get(`https://api.github.com/repos/csmartinsfct/${repoName}/issues/${number}/comments?access_token=317ebb0abbe355585e655fbdb0defc166ffe03c8`)
+    axios.get(`https://api.github.com/repos/csmartinsfct/${repoName}/issues/${number}/comments?access_token=573dbede2e9766fd4d41610d15a8b82371fd522a`)
       .then(function (response) {
         // handle success
        resolve(response.data);
@@ -132,7 +136,7 @@ async getCommentsOfIssue(repoName, number){
  async getIssues(){
   try{
     let issuesTmp = await Promise.all(Repos.map(async (repoName) =>
-      axios.get(`https://api.github.com/repos/csmartinsfct/${repoName}/issues?access_token=317ebb0abbe355585e655fbdb0defc166ffe03c8`)
+      axios.get(`https://api.github.com/repos/csmartinsfct/${repoName}/issues?access_token=573dbede2e9766fd4d41610d15a8b82371fd522a`)
         .then(response => {
           const data = response.data;
           return data.map(issue => {
