@@ -62,7 +62,7 @@ export default class DdfInfo extends React.Component {
     let processedIssues = {};
     let categories = [];
 
-    //iisues that don't have a bounty
+    //isues that don't have a bounty
     issues.filter(issue => issue.contractAddress === -1);
 
     issues.forEach(issue => {
@@ -75,8 +75,7 @@ export default class DdfInfo extends React.Component {
         processedIssues[category].issues.push(issue);
       }
       issue.labels.forEach(label => {
-        //if the filter has been unchecked by the user then let it be
-        if(!processedIssues[category].filters[label]){
+        if(processedIssues[category].filters[label] === undefined){
           //filters always start off as checked
           processedIssues[category].filters[label] = true;
         }
