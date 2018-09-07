@@ -14,7 +14,22 @@ import Filter from '../../Filter';
 import Dropdown from '../../Dropdown';
 import { Categories } from '../../../constants';
 
-const Header = ({styling}) => (
+const Header = ({styling, categories, selectedCategory, setCategory, issues, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks, issuesFiltered, bountiesPerPage, currentPage, totalIssuesFiltered, orderBy, handleOrderByClicked}) => {
+
+  let max = 0;
+  let min = 0;
+  if(issuesFiltered){
+    if(bountiesPerPage > totalIssuesFiltered){
+      min = totalIssuesFiltered > 0 ? currentPage * bountiesPerPage + 1 : 0;
+      max = totalIssuesFiltered;
+    }
+    else{
+      min = currentPage * bountiesPerPage + 1;
+      max = totalIssuesFiltered >= (currentPage + 1) * bountiesPerPage ? (currentPage + 1) * bountiesPerPage : currentPage * (bountiesPerPage + 1) + issuesFiltered.length - 1;
+    }
+  }
+
+  return (
     <div>
       <StyledTitle>
         Bounties
@@ -24,16 +39,16 @@ const Header = ({styling}) => (
       </StyledSubHeader>
       <StyledCategories>
         <Menu
-          onClick={() => {}}
-          selectedKeys={["Development"]}
+          onClick={(item) => setCategory(item.key)}
+          selectedKeys={[selectedCategory]}
           mode="horizontal"
           items={Categories}
           className="categories-desktop"
           styling={styling.menu}
         />
         <Menu
-          onClick={() => {}}
-          selectedKeys={["Development"]}
+          onClick={(item) => setCategory(item.key)}
+          selectedKeys={[selectedCategory]}
           mode="vertical"
           items={Categories}
           className="categories-mobile"
@@ -41,13 +56,14 @@ const Header = ({styling}) => (
         />
       </StyledCategories>
       <StyledFilters>
-        {Categories[0].filters.map(filter => (
+        {issues[selectedCategory] && Object.entries(issues[selectedCategory].filters).map(filter => (
           <Filter
             styling={styling.filters}
-            checked
-            key={filter}
+            checked={filter[1]}
+            key={filter[0]}
+            onChange={(checked) => {handleClickedFilter(filter[0], checked)}}
           >
-            {filter}
+            {filter[0]}
           </Filter>
         ))}
       </StyledFilters>
@@ -55,13 +71,14 @@ const Header = ({styling}) => (
         <div>
           <StyledListHeaderLeft>
             <StyledItemsCounter>
-              Showing 1-15 of 190
+              {issuesFiltered ? `Showing ${min}-${max} of ${totalIssuesFiltered}` : "Showing 0 of 0"}
             </StyledItemsCounter>
             <StyledSwitch>
               <Switch
                 size="small"
-                checked={false}
+                checked={showCompletedTasks}
                 styling={styling.switch}
+                onChange={(checked) => handleShowCompletedTasks(checked)}
               />
               <StyledLabelCompletedTasks>
                 Show completed tasks
@@ -72,8 +89,8 @@ const Header = ({styling}) => (
         <div>
           <Dropdown
             placement="bottomCenter"
-            selected="Most recent"
-            handleClick={(val) => console.log(val)}
+            selected={orderBy}
+            handleClick={(order) => handleOrderByClicked(order)}
             menu={["Most recent", "Highest value", "Lowest value"]}
             styling={styling.dropdown}
             trigger="click"
@@ -81,7 +98,7 @@ const Header = ({styling}) => (
         </div>
       </StyledListHeader>
     </div>
-)
+)}
 
 Header.propTypes = {
   styling: PropTypes.object.isRequired,
