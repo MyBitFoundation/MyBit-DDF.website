@@ -7,3 +7,4 @@ export { default as SocialIcons } from './socialIcons';
 //TODO remove once jose implements the end point
 export { default as Repos } from './repos';
 export { default as IssuesCategories } from './issuesCategories';
+export { default as BountiesPerPage } from './bountiesPerPage';

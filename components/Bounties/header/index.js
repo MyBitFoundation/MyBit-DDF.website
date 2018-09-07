@@ -14,7 +14,22 @@ import Filter from '../../Filter';
 import Dropdown from '../../Dropdown';
 import { Categories } from '../../../constants';
 
-const Header = ({styling, categories, selectedCategory, setCategory, issues, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks}) => (
+const Header = ({styling, categories, selectedCategory, setCategory, issues, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks, issuesFiltered, bountiesPerPage, currentPage, totalIssuesFiltered, orderBy, handleOrderByClicked}) => {
+
+  let max = 0;
+  let min = 0;
+  if(issuesFiltered){
+    if(bountiesPerPage > totalIssuesFiltered){
+      min = totalIssuesFiltered > 0 ? currentPage * bountiesPerPage + 1 : 0;
+      max = totalIssuesFiltered;
+    }
+    else{
+      min = currentPage * bountiesPerPage + 1;
+      max = totalIssuesFiltered >= (currentPage + 1) * bountiesPerPage ? (currentPage + 1) * bountiesPerPage : currentPage * (bountiesPerPage + 1) + issuesFiltered.length - 1;
+    }
+  }
+
+  return (
     <div>
       <StyledTitle>
         Bounties
@@ -41,7 +56,7 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
         />
       </StyledCategories>
       <StyledFilters>
-        {Object.entries(issues[selectedCategory].filters).map(filter => (
+        {issues[selectedCategory] && Object.entries(issues[selectedCategory].filters).map(filter => (
           <Filter
             styling={styling.filters}
             checked={filter[1]}
@@ -56,7 +71,7 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
         <div>
           <StyledListHeaderLeft>
             <StyledItemsCounter>
-              Showing 1-15 of 190
+              {issuesFiltered ? `Showing ${min}-${max} of ${totalIssuesFiltered}` : "Showing 0 of 0"}
             </StyledItemsCounter>
             <StyledSwitch>
               <Switch
@@ -74,8 +89,8 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
         <div>
           <Dropdown
             placement="bottomCenter"
-            selected="Most recent"
-            handleClick={(val) => console.log(val)}
+            selected={orderBy}
+            handleClick={(order) => handleOrderByClicked(order)}
             menu={["Most recent", "Highest value", "Lowest value"]}
             styling={styling.dropdown}
             trigger="click"
@@ -83,7 +98,7 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
         </div>
       </StyledListHeader>
     </div>
-)
+)}
 
 Header.propTypes = {
   styling: PropTypes.object.isRequired,

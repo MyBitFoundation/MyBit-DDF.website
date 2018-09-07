@@ -18,7 +18,7 @@ const Switch = props =>
 Switch.propTypes = {
   styling: PropTypes.object.isRequired,
   checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
   size: PropTypes.string,
 };
 
