@@ -7,7 +7,7 @@ const StyledLogo = styled(Img)`
   position: relative;
   margin-top: 40px;
 
-  @media (max-width: 850px) {
+  @media (max-width: 900px) {
     width: 80px;
     margin-left: 40px;
     margin-top: 20px;

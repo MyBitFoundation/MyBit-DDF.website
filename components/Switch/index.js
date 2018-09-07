@@ -11,13 +11,15 @@ const Switch = props =>
       unCheckedChildren={<Icon type="cross" />}
       checked={props.checked}
       size={props.size}
+      onChange={props.onChange}
     />
   </StyledSwitch>
 
 Switch.propTypes = {
   styling: PropTypes.object.isRequired,
   checked: PropTypes.bool.isRequired,
-  size: PropTypes.string
+  onChange: PropTypes.func.isRequired,
+  size: PropTypes.string,
 };
 
 Switch.defaultProps = {
