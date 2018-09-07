@@ -7,8 +7,6 @@ import Theme from '../components/Theme';
 import Layout from '../index.js'
 import Header from '../components/Header'
 import Stats from '../components/Stats';
-import DdfInfo from '../components/Context/DdfInfo'
-import DdfInfoContext from '../components/Context/DdfInfoContext'
 import Bounties from '../components/Bounties';
 import StyledAppWrapper from './StyledAppWrapper';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
@@ -216,39 +214,37 @@ getIssues = async () => {
   render(){
     const {loadingBounties} = this.state;
     return(
-      <DdfInfo>
-        <Layout>
-          <StyledAppWrapper isMenuOpen={this.state.sideBar}>
-            <Header
-              styling={Theme}
-              handleClickMobileMenu={this.handleClickMobileMenu}
-              sidebarOpen={this.state.sideBar}
-            />
-            <Stats stats={this.state.stats}/>
-            <StyledPageContentWrapper>
-              <Bounties
-                styling={Theme}
-                issues={this.state.issues}
-                categories={this.state.categories}
-                selectedCategory={this.state.selectedCategory}
-                setCategory={this.setCategory}
-                handleClickedFilter={this.handleClickedFilter}
-                showCompletedTasks={this.state.showCompletedTasks}
-                handleShowCompletedTasks={this.handleShowCompletedTasks}
-                bountiesPerPage={BountiesPerPage}
-                currentPage={this.state.currentPage}
-                setCurrentPage={this.setCurrentPage}
-                orderBy={this.state.orderBy}
-                handleOrderByClicked={this.handleOrderByClicked}
-              />
-            </StyledPageContentWrapper>
-          </StyledAppWrapper>
-          <Footer
-            styling={Theme.footer}
-            footerDetails={FooterDetails}
+      <Layout>
+        <StyledAppWrapper isMenuOpen={this.state.sideBar}>
+          <Header
+            styling={Theme}
+            handleClickMobileMenu={this.handleClickMobileMenu}
+            sidebarOpen={this.state.sideBar}
           />
-        </Layout>
-      </DdfInfo>
+          <Stats stats={this.state.stats}/>
+          <StyledPageContentWrapper>
+            <Bounties
+              styling={Theme}
+              issues={this.state.issues}
+              categories={this.state.categories}
+              selectedCategory={this.state.selectedCategory}
+              setCategory={this.setCategory}
+              handleClickedFilter={this.handleClickedFilter}
+              showCompletedTasks={this.state.showCompletedTasks}
+              handleShowCompletedTasks={this.handleShowCompletedTasks}
+              bountiesPerPage={BountiesPerPage}
+              currentPage={this.state.currentPage}
+              setCurrentPage={this.setCurrentPage}
+              orderBy={this.state.orderBy}
+              handleOrderByClicked={this.handleOrderByClicked}
+            />
+          </StyledPageContentWrapper>
+        </StyledAppWrapper>
+        <Footer
+          styling={Theme.footer}
+          footerDetails={FooterDetails}
+        />
+      </Layout>
     )
   }
 }
