@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledSwitch = styled.div`
-  @media (max-width: 850px) {
+  @media (max-width: 900px) {
     margin-top: 10px;
   }
 `;
