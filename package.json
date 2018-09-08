@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "cross-env PORT=8080 next -p $PORT",
     "build": "next build",
+    "export": "next export -o build",
     "start": "cross-env PORT=8080 next start -p $PORT",
     "test": "NODE_ENV=test jest"
   },
