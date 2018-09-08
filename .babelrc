@@ -1,7 +1,17 @@
 {
   "env": {
     "test": {
-      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]],
+      "plugins": [
+          "transform-decorators-legacy",
+          [
+            "import",
+            {
+              "libraryName": "antd",
+              "style": true
+            }
+          ]
+      ]
     }
   },
   "presets": ["next/babel"],

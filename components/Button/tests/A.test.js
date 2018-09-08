@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import A from '../A';
+import A from '../Anchor';
 
 describe('<A />', () => {
   it('should render an <a> tag', () => {
