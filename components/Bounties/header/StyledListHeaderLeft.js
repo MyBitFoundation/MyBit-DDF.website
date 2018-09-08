@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const StyledListHeaderLeft = styled.div`
   display: flex;
 
-  @media (max-width: 850px) {
+  @media (max-width: 900px) {
     display: block;
   }
 

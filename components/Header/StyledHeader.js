@@ -5,7 +5,7 @@ const StyledHeader = styled.header`
   height: 221px;
   width: 100%;
 
-  @media (max-width: 850px) {
+  @media (max-width: 900px) {
     height: 100px;
     margin-bottom: 20px;
   }
