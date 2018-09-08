@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@zeit/next-less": "0.3.0",
-    "antd": "3.8.3",
+    "antd": "3.9.2",
     "babel-plugin-import": "1.8.0",
     "babel-plugin-inline-react-svg": "0.5.4",
     "babel-plugin-transform-assets-import-to-string": "1.2.0",
