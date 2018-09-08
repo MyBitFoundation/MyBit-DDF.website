@@ -10,7 +10,7 @@ const StyledNavigationBar = styled.div`
     font-size: 16px;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1000px) {
     .ant-menu-item{
       margin-right: 30px;
     }
@@ -21,7 +21,7 @@ const StyledNavigationBar = styled.div`
   }
 
   .navigation--is-desktop{
-    @media (max-width: 996px) {
+    @media (max-width: 900px) {
       display: none;
     }
   }
@@ -33,23 +33,15 @@ const StyledNavigationBar = styled.div`
     right: 60px;
 
     & img{
-      width: 30px;
-
-      @media (max-width: 850px) {
-        width: 20px;
-      }
+      width: 20px;
     }
 
-    @media (max-width: 996px) {
+    @media (max-width: 900px) {
       display: block;
       right: 20px;
-    }
-
-    @media (max-width: 850px) {
       top: -15px;
     }
   }
-
 `;
 
 export default StyledNavigationBar;
