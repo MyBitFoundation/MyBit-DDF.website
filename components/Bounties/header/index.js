@@ -14,7 +14,7 @@ import Filter from '../../Filter';
 import Dropdown from '../../Dropdown';
 import { Categories } from '../../../constants';
 
-const Header = ({styling}) => (
+const Header = ({styling, categories, selectedCategory, setCategory, issues, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks}) => (
     <div>
       <StyledTitle>
         Bounties
@@ -24,16 +24,16 @@ const Header = ({styling}) => (
       </StyledSubHeader>
       <StyledCategories>
         <Menu
-          onClick={() => {}}
-          selectedKeys={["Development"]}
+          onClick={(item) => setCategory(item.key)}
+          selectedKeys={[selectedCategory]}
           mode="horizontal"
           items={Categories}
           className="categories-desktop"
           styling={styling.menu}
         />
         <Menu
-          onClick={() => {}}
-          selectedKeys={["Development"]}
+          onClick={(item) => setCategory(item.key)}
+          selectedKeys={[selectedCategory]}
           mode="vertical"
           items={Categories}
           className="categories-mobile"
@@ -41,13 +41,14 @@ const Header = ({styling}) => (
         />
       </StyledCategories>
       <StyledFilters>
-        {Categories[0].filters.map(filter => (
+        {Object.entries(issues[selectedCategory].filters).map(filter => (
           <Filter
             styling={styling.filters}
-            checked
-            key={filter}
+            checked={filter[1]}
+            key={filter[0]}
+            onChange={(checked) => {handleClickedFilter(filter[0], checked)}}
           >
-            {filter}
+            {filter[0]}
           </Filter>
         ))}
       </StyledFilters>
@@ -60,8 +61,9 @@ const Header = ({styling}) => (
             <StyledSwitch>
               <Switch
                 size="small"
-                checked={false}
+                checked={showCompletedTasks}
                 styling={styling.switch}
+                onChange={(checked) => handleShowCompletedTasks(checked)}
               />
               <StyledLabelCompletedTasks>
                 Show completed tasks
