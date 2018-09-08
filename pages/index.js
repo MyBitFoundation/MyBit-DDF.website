@@ -100,114 +100,114 @@ export default class Home extends React.Component{
     this.setState({stats});
   }
 
- /*
- * this method splits issues by categories and also sets it up so that
- + its easy to handle the state of each filter
- */
- organizeIssues = (issues) => {
-    let completedTasks = 0;
-    let openTasks = 0;
-    let processedIssues = {};
-    let categories = [];
-    //isues that don't have a bounty
-    issues = issues.filter(issue => issue.contractAddress != -1);
-
-    issues.forEach(issue => {
-      const category = issue.category;
-      if(!processedIssues[category]){
-        processedIssues[category] = {issues: [issue], filters:{}};
-        categories.push(category);
-      }
-      else{
-        processedIssues[category].issues.push(issue);
-      }
-      if(issue.state === "open"){
-        openTasks += 1;
-      }
-      else{
-        completedTasks += 1;
-      }
-      issue.labels.forEach(label => {
-        //if the user has toggled the filter off before then let it be
-        if(this.state.issues && this.state.issues[category] && this.state.isssues[category].filters[label] === false){
-          processedIssues[category].filters[label] = false;
+   /*
+   * this method splits issues by categories and also sets it up so that
+   + its easy to handle the state of each filter
+   */
+   organizeIssues = (issues) => {
+      let completedTasks = 0;
+      let openTasks = 0;
+      let processedIssues = {};
+      let categories = [];
+      //isues that don't have a bounty
+      issues = issues.filter(issue => issue.contractAddress != -1);
+  
+      issues.forEach(issue => {
+        const category = issue.category;
+        if(!processedIssues[category]){
+          processedIssues[category] = {issues: [issue], filters:{}};
+          categories.push(category);
         }
-        else if(processedIssues[category].filters[label] === undefined){
-          //filters always start off as checked
-          processedIssues[category].filters[label] = true;
+        else{
+          processedIssues[category].issues.push(issue);
+        }
+        if(issue.state === "open"){
+          openTasks += 1;
+        }
+        else{
+          completedTasks += 1;
+        }
+        issue.labels.forEach(label => {
+          //if the user has toggled the filter off before then let it be
+          if(this.state.issues && this.state.issues[category] && this.state.isssues[category].filters[label] === false){
+            processedIssues[category].filters[label] = false;
+          }
+          else if(processedIssues[category].filters[label] === undefined){
+            //filters always start off as checked
+            processedIssues[category].filters[label] = true;
+          }
+        })
+      });
+  
+      this.setStats(completedTasks, openTasks);
+      this.setState({issues: processedIssues, categories})
+   }
+
+   getContractAddress = (issue, comments) => {
+    comments = comments.filter(comment => comment.user.login === "status-open-bounty");
+    let contractAddress = -1;
+    if(comments.length > 0){
+      let match = comments[0].body.match(ethereumRegex());
+      if(match && match.length > 0){
+        contractAddress = match[0];
+      }
+    }
+  
+    return {
+      ...issue,
+      contractAddress,
+      value: Math.floor((Math.random() * 1000) + 100)
+    };
+   }
+
+
+  getCategory = (repoName) => {
+    if(repoName.indexOf("tech") !== -1 || repoName.indexOf("website") !== -1)
+      return "Development";
+    else if(repoName.indexOf("design") !== -1){
+      return "Design";
+    }
+    else if(repoName.indexOf("marketing") !== -1)
+      return "Marketing";
+    else
+      return "Other";
+  }
+
+  getIssues = async () => {
+    try{
+      let issues = await GithubApi.getOrgIssues()
+      issues = issues.map(issue => {
+        const repoUrl = issue.repository.html_url;
+        const labels = issue.labels.map(label => label);
+        const repoName = issue.repository.name
+        const category = this.getCategory(repoName);
+  
+        return {
+          issueUrl: issue.html_url,
+          title: issue.title,
+          createdAt: issue.created_at,
+          number: issue.number,
+          state: issue.state,
+          repoUrl: repoUrl,
+          repoName: repoName,
+          labels,
+          category,
         }
       })
-    });
-
-    this.setStats(completedTasks, openTasks);
-    this.setState({issues: processedIssues, categories})
- }
-
- getContractAddress = (issue, comments) => {
-  comments = comments.filter(comment => comment.user.login === "status-open-bounty");
-  let contractAddress = -1;
-  if(comments.length > 0){
-    let match = comments[0].body.match(ethereumRegex());
-    if(match && match.length > 0){
-      contractAddress = match[0];
+  
+      issues = await Promise.all(issues.map(async issue => {
+        const comments = await GithubApi.getCommentsOfIssue(issue.repoName, issue.number);
+  
+        //TODO get value from contract address
+        return this.getContractAddress(issue, comments);
+      }));
+  
+      this.organizeIssues(issues);
+  
+    }catch(err){
+      setTimeout(this.getIssues, 2000);
     }
-  }
-
-  return {
-    ...issue,
-    contractAddress,
-    value: Math.floor((Math.random() * 1000) + 100)
-  };
- }
-
-
- getCategory = (repoName) => {
-  if(repoName.indexOf("tech") !== -1 || repoName.indexOf("website") !== -1)
-    return "Development";
-  else if(repoName.indexOf("design") !== -1){
-    return "Design";
-  }
-  else if(repoName.indexOf("marketing") !== -1)
-    return "Marketing";
-  else
-    return "Other";
-}
-
-getIssues = async () => {
-  try{
-    let issues = await GithubApi.getOrgIssues()
-    issues = issues.map(issue => {
-      const repoUrl = issue.repository.html_url;
-      const labels = issue.labels.map(label => label);
-      const repoName = issue.repository.name
-      const category = this.getCategory(repoName);
-
-      return {
-        issueUrl: issue.html_url,
-        title: issue.title,
-        createdAt: issue.created_at,
-        number: issue.number,
-        state: issue.state,
-        repoUrl: repoUrl,
-        repoName: repoName,
-        labels,
-        category,
-      }
-    })
-
-    issues = await Promise.all(issues.map(async issue => {
-      const comments = await GithubApi.getCommentsOfIssue(issue.repoName, issue.number);
-
-      //TODO get value from contract address
-      return this.getContractAddress(issue, comments);
-    }));
-
-    this.organizeIssues(issues);
-
-  }catch(err){
-    setTimeout(this.getIssues, 2000);
-  }
- }
+   }
 
   handleClickMobileMenu = (sideBar) => {
     this.setState({sideBar});

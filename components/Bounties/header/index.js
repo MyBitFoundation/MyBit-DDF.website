@@ -12,7 +12,7 @@ import Menu from '../../Menu';
 import Switch from '../../Switch';
 import Filter from '../../Filter';
 import Dropdown from '../../Dropdown';
-import { Categories } from '../../../constants';
+import { Categories } from '../../../constants';
 
 const Header = ({styling, categories, selectedCategory, setCategory, issues, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks, issuesFiltered, bountiesPerPage, currentPage, totalIssuesFiltered, orderBy, handleOrderByClicked}) => {
 
