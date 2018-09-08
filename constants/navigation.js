@@ -38,17 +38,6 @@ const navigationItems = [
         linkTo: "/first-resource"
       }
     ]
-
-  }, {
-    name: "Eng",
-    iconRight: "down",
-    iconLeft: "global",
-    subNavigation: [
-      {
-        name: "Spanish",
-        linkTo: "/first-resource"
-      }
-    ]
   }
 ]
 

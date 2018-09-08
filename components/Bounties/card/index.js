@@ -14,6 +14,8 @@ import StyledHeader from './StyledHeader';
 import StyledFooter from './StyledFooter';
 import Button from '../../Button';
 import { GetTimeAgo } from '../../../utils';
+import Icon from '../../Icon';
+import StyledCheckmark from './StyledCheckmark';
 
 const generateLabels = (labels) =>
   <StyledLabels>
@@ -29,50 +31,63 @@ const getTimeLabel = (time) =>
     {GetTimeAgo(time)}
   </StyledCardTime>
 
-const Card = ({name, labels, repoName, repoUrl, value, creationTime, issueUrl, styling}) =>
+const Card = ({title, labels, repoName, repoUrl, value, createdAt, issueUrl, styling, state}) =>
   <StyledCard>
     <StyledHeader>
       <div>
-        <StyledCardTitle>
-          {name}
+        {state === "closed" && (
+          <StyledCheckmark>
+            <Icon type="check" />
+          </StyledCheckmark>
+        )}
+        <StyledCardTitle state={state}>
+          {title}
         </StyledCardTitle>
         {generateLabels(labels)}
       </div>
       <div>
-        {getTimeLabel(creationTime)}
+        {getTimeLabel(createdAt)}
       </div>
     </StyledHeader>
-    <StyledRepoName>
+    <StyledRepoName
+      href={repoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      state={state}
+    >
       {repoName}
     </StyledRepoName>
-    <StyledFooter>
-      <div>
-        <StyledValueLabel>
+    <StyledFooter state={state}>
+      <div style={{marginTop: "16px"}}>
+        <StyledValueLabel state={state}>
           Value
         </StyledValueLabel>
-        <StyledValue>
-          {value}
+        <StyledValue state={state}>
+          ${value}
         </StyledValue>
       </div>
-      <StyledButtonChallenge>
-        <Button
-          styling={styling.primary.blue}
-          size="large"
-          href="/placeholder"
-        >
-          Accept Challenge
-      </Button>
-      </StyledButtonChallenge>
+
+      {state === "open" &&
+        <StyledButtonChallenge>
+          <Button
+            styling={styling.primary.blue}
+            size="large"
+            href={issueUrl}
+          >
+            Accept Challenge
+        </Button>
+        </StyledButtonChallenge>
+      }
     </StyledFooter>
   </StyledCard>
 
 Card.propTypes = {
   styling: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   repoName: PropTypes.string.isRequired,
   repoUrl: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  creationTime: PropTypes.number.isRequired,
+  createdAt: PropTypes.string.isRequired,
   issueUrl: PropTypes.string.isRequired,
 };
 
