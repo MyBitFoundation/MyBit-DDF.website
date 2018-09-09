@@ -12,6 +12,8 @@ jobs:
       - run: yarn install
       
       - run: yarn build
+      
+      - run: yarn export
 
       - deploy:
           name: Deploy to Now
