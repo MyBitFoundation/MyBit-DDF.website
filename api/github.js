@@ -1,26 +1,11 @@
+import axios from 'axios';
+const END_POINT = "https://githubmybitio-ebnmplgtcq.now.sh"
+
 const GithubApi = {
-  getCommentsOfIssue: (repoName, number) =>
-    new Promise(async (resolve, reject) => {
-      try {
-        setTimeout(() => {
-          resolve(require(`./mockData/comments/${repoName}_${number}`))
-        }, 1000)
-      } catch (error) {
-        reject(error);
-      }
-    })
-  ,
-  getOrgIssues: () =>
-    new Promise(async (resolve, reject) => {
-      try {
-        setTimeout(() => {
-          resolve(require('./mockData/orgIssues'))
-        }, 1000)
-      } catch (error) {
-        reject(error);
-      }
-    })
-  ,
+  getOrgIssues: async () => {
+    const response = await axios(END_POINT + "/api/issues")
+    return response.data;
+  },
   getStats: () =>
     new Promise(async (resolve, reject) => {
       try {

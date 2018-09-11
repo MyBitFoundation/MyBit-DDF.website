@@ -109,7 +109,7 @@ export default class Home extends React.Component{
       let categories = [];
       //isues that don't have a bounty
       issues = issues.filter(issue => issue.contractAddress != -1);
-  
+
       issues.forEach(issue => {
         const category = issue.category;
         if(!processedIssues[category]){
@@ -119,7 +119,7 @@ export default class Home extends React.Component{
         else{
           processedIssues[category].issues.push(issue);
         }
-        if(issue.state === "open"){
+        if(issue.state === "OPEN"){
           openTasks += 1;
         }
         else{
@@ -136,28 +136,10 @@ export default class Home extends React.Component{
           }
         })
       });
-  
+
       this.setStats(completedTasks, openTasks);
       this.setState({issues: processedIssues, categories})
    }
-
-   getContractAddress = (issue, comments) => {
-    comments = comments.filter(comment => comment.user.login === "status-open-bounty");
-    let contractAddress = -1;
-    if(comments.length > 0){
-      let match = comments[0].body.match(ethereumRegex());
-      if(match && match.length > 0){
-        contractAddress = match[0];
-      }
-    }
-  
-    return {
-      ...issue,
-      contractAddress,
-      value: Math.floor((Math.random() * 1000) + 100)
-    };
-   }
-
 
   getCategory = (repoName) => {
     if(repoName.indexOf("tech") !== -1 || repoName.indexOf("website") !== -1)
@@ -168,40 +150,33 @@ export default class Home extends React.Component{
     else if(repoName.indexOf("marketing") !== -1)
       return "Marketing";
     else
-      return "Other";
+      return "Development";
   }
 
   getIssues = async () => {
     try{
       let issues = await GithubApi.getOrgIssues()
-      issues = issues.map(issue => {
-        const repoUrl = issue.repository.html_url;
-        const labels = issue.labels.map(label => label);
-        const repoName = issue.repository.name
+      issues = issues.map((issue, index) => {
+        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, state, url} = issue;
         const category = this.getCategory(repoName);
-  
+
         return {
-          issueUrl: issue.html_url,
-          title: issue.title,
-          createdAt: issue.created_at,
-          number: issue.number,
-          state: issue.state,
-          repoUrl: repoUrl,
-          repoName: repoName,
+          createdAt,
+          state,
+          repoName,
           labels,
           category,
+          contractAddress,
+          value,
+          tokenSymbol,
+          title,
+          url,
+          repoUrl: `https://github.com/MyBitFoundation/${repoName}`,
         }
       })
-  
-      issues = await Promise.all(issues.map(async issue => {
-        const comments = await GithubApi.getCommentsOfIssue(issue.repoName, issue.number);
-  
-        //TODO get value from contract address
-        return this.getContractAddress(issue, comments);
-      }));
-  
+
       this.organizeIssues(issues);
-  
+
     }catch(err){
       setTimeout(this.getIssues, 2000);
     }

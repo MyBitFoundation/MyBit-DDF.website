@@ -31,11 +31,11 @@ const getTimeLabel = (time) =>
     {GetTimeAgo(time)}
   </StyledCardTime>
 
-const Card = ({title, labels, repoName, repoUrl, value, createdAt, issueUrl, styling, state}) =>
+const Card = ({title, labels, repoName, repoUrl, value, createdAt, url, styling, state, tokenSymbol}) =>
   <StyledCard>
     <StyledHeader>
       <div>
-        {state === "closed" && (
+        {state === "CLOSED" && (
           <StyledCheckmark>
             <Icon type="check" />
           </StyledCheckmark>
@@ -63,16 +63,16 @@ const Card = ({title, labels, repoName, repoUrl, value, createdAt, issueUrl, sty
           Value
         </StyledValueLabel>
         <StyledValue state={state}>
-          ${value}
+          {tokenSymbol}{' '}{value}
         </StyledValue>
       </div>
 
-      {state === "open" &&
+      {state === "OPEN" &&
         <StyledButtonChallenge>
           <Button
             styling={styling.primary.blue}
             size="large"
-            href={issueUrl}
+            href={url}
           >
             Accept Challenge
         </Button>
@@ -88,7 +88,8 @@ Card.propTypes = {
   repoUrl: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  issueUrl: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  tokenSymbol: PropTypes.string.isRequired,
 };
 
 export default Card;

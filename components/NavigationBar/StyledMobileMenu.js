@@ -34,6 +34,12 @@ const StyledMobileMenu = styled.div`
       transition: height 0.35s ease-in 200ms;
     }
 
+    & .IconList{
+      transition: height 0.1 ease-in 100ms;
+      transform: scale(1) translateY(-500px) !important;
+    }
+
+
     &--is-visible{
       height: 102vh;
 
