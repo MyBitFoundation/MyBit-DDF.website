@@ -18,7 +18,7 @@ const StyledRepoName = styled.a`
     text-decoration: none;
   }
 
-  ${props => props.state === "CLOSED" && css`
+  ${props => props.merged && css`
     color: #7d7d7d;
     cursor: initial;
 

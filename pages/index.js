@@ -119,7 +119,7 @@ export default class Home extends React.Component{
         else{
           processedIssues[category].issues.push(issue);
         }
-        if(issue.state === "OPEN"){
+        if(!issue.merged){
           openTasks += 1;
         }
         else{
@@ -157,12 +157,12 @@ export default class Home extends React.Component{
     try{
       let issues = await GithubApi.getOrgIssues()
       issues = issues.map((issue, index) => {
-        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, state, url} = issue;
+        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url} = issue;
         const category = this.getCategory(repoName);
 
         return {
           createdAt,
-          state,
+          merged,
           repoName,
           labels,
           category,
