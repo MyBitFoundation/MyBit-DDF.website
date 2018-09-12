@@ -70,15 +70,14 @@ export default class Home extends React.Component{
     }
   }
 
-  setStats = async (completedTasks, openTasks) => {
-    let stats = await GithubApi.getStats();
-    stats = [{
+  setStats = (completedTasks, openTasks, totalPayout, totalValue, contributors) => {
+    const stats = [{
         name:"Total Value of Fund",
-        value: stats.totalValue,
+        value: `$${totalValue}`,
         loadingSize: "130"
       }, {
         name: "Total Payout",
-        value: stats.totalPayout,
+        value: `$${totalPayout}`,
         loadingSize: "130"
       }, {
         name: "Open Tasks",
@@ -90,7 +89,7 @@ export default class Home extends React.Component{
         loadingSize: "50"
       }, {
         name: "No. of Contributors",
-        value: stats.contributors,
+        value: contributors,
         loadingSize: "50"
       }
     ]
@@ -102,15 +101,16 @@ export default class Home extends React.Component{
    * this method splits issues by categories and also sets it up so that
    + its easy to handle the state of each filter
    */
-   organizeIssues = (issues) => {
+   organizeIssues = (data) => {
+    try{
       let completedTasks = 0;
       let openTasks = 0;
       let processedIssues = {};
       let categories = [];
       //isues that don't have a bounty
-      issues = issues.filter(issue => issue.contractAddress != -1);
+      data.issues = data.issues.filter(issue => issue.contractAddress != -1);
 
-      issues.forEach(issue => {
+      data.issues.forEach(issue => {
         const category = issue.category;
         if(!processedIssues[category]){
           processedIssues[category] = {issues: [issue], filters:{}};
@@ -137,8 +137,11 @@ export default class Home extends React.Component{
         })
       });
 
-      this.setStats(completedTasks, openTasks);
+      this.setStats(completedTasks, openTasks, data.totalPayoutOfFund, data.totalValueOfFund, data.numberOfUniqueContributors);
       this.setState({issues: processedIssues, categories})
+    }catch(err){
+      console.log(err)
+    }
    }
 
   getCategory = (repoName) => {
@@ -155,8 +158,9 @@ export default class Home extends React.Component{
 
   getIssues = async () => {
     try{
-      let issues = await GithubApi.getOrgIssues()
-      issues = issues.map((issue, index) => {
+      let data = await GithubApi.getOrgIssues()
+
+      data.issues = data.issues.map((issue, index) => {
         const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url} = issue;
         const category = this.getCategory(repoName);
 
@@ -175,7 +179,7 @@ export default class Home extends React.Component{
         }
       })
 
-      this.organizeIssues(issues);
+      this.organizeIssues(data);
 
     }catch(err){
       setTimeout(this.getIssues, 2000);
