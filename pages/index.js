@@ -11,6 +11,7 @@ import Bounties from '../components/Bounties';
 import StyledAppWrapper from './StyledAppWrapper';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
 import Footer from '../components/Footer';
+import StyledRefreshWarning from './StyledRefreshWarning';
 
 import { Footer as FooterDetails, BountiesPerPage, RefreshTimeInSeconds } from '../constants';
 import GithubApi from '../api/github';
@@ -41,17 +42,17 @@ export default class Home extends React.Component{
         categories: [],
         currentPage: 0,
         showCompletedTasks: true,
+        pullingIssues: false,
     }
-    this.pullingIssues = false;
   }
 
 
   componentDidMount = () => {
-    this.pullingIssues = true;
+    this.setState({pullingIssues: true})
     this.getIssues();
     setInterval(() => {
-      if(this.pullingIssues) return;
-        this.pullingIssues = true;
+      if(this.state.pullingIssues) return;
+        this.setState({pullingIssues: true})
       this.getIssues()
     }, RefreshTimeInSeconds * 1000);
   }
@@ -189,7 +190,7 @@ export default class Home extends React.Component{
       })
 
       this.organizeIssues(data);
-      this.pullingIssues = false;
+      this.setState({pullingIssues: false})
     }catch(err){
       setTimeout(this.getIssues, 2000);
     }
@@ -200,7 +201,6 @@ export default class Home extends React.Component{
   }
 
   render(){
-    const {loadingBounties} = this.state;
     return(
       <Layout>
         <StyledAppWrapper isMenuOpen={this.state.sideBar}>
@@ -226,6 +226,7 @@ export default class Home extends React.Component{
               orderBy={this.state.orderBy}
               handleOrderByClicked={this.handleOrderByClicked}
             />
+            <StyledRefreshWarning>The information on this page refreshes every 30 seconds</StyledRefreshWarning>
           </StyledPageContentWrapper>
         </StyledAppWrapper>
         <Footer
