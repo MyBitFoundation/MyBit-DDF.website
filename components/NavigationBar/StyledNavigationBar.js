@@ -10,6 +10,10 @@ const StyledNavigationBar = styled.div`
     font-size: 16px;
   }
 
+  .ant-menu-overflowed-submenu{
+    display: none;
+  }
+
   @media (max-width: 1000px) {
     .ant-menu-item{
       margin-right: 30px;
