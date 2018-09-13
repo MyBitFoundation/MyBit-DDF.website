@@ -31,16 +31,16 @@ const getTimeLabel = (time) =>
     {GetTimeAgo(time)}
   </StyledCardTime>
 
-const Card = ({title, labels, repoName, repoUrl, value, createdAt, issueUrl, styling, state}) =>
+const Card = ({title, labels, repoName, repoUrl, value, createdAt, url, styling, merged, tokenSymbol}) =>
   <StyledCard>
     <StyledHeader>
       <div>
-        {state === "closed" && (
+        {merged && (
           <StyledCheckmark>
             <Icon type="check" />
           </StyledCheckmark>
         )}
-        <StyledCardTitle state={state}>
+        <StyledCardTitle merged={merged}>
           {title}
         </StyledCardTitle>
         {generateLabels(labels)}
@@ -53,26 +53,26 @@ const Card = ({title, labels, repoName, repoUrl, value, createdAt, issueUrl, sty
       href={repoUrl}
       target="_blank"
       rel="noopener noreferrer"
-      state={state}
+      merged={merged}
     >
       {repoName}
     </StyledRepoName>
-    <StyledFooter state={state}>
+    <StyledFooter>
       <div style={{marginTop: "16px"}}>
-        <StyledValueLabel state={state}>
+        <StyledValueLabel merged={merged}>
           Value
         </StyledValueLabel>
-        <StyledValue state={state}>
-          ${value}
+        <StyledValue merged={merged}>
+          {tokenSymbol}{' '}{value}
         </StyledValue>
       </div>
 
-      {state === "open" &&
+      {!merged &&
         <StyledButtonChallenge>
           <Button
             styling={styling.primary.blue}
             size="large"
-            href={issueUrl}
+            href={url}
           >
             Accept Challenge
         </Button>
@@ -88,7 +88,9 @@ Card.propTypes = {
   repoUrl: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  issueUrl: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  tokenSymbol: PropTypes.string.isRequired,
+  merged: PropTypes.bool.isRequired,
 };
 
 export default Card;

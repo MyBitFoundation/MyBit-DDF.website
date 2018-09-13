@@ -5,6 +5,7 @@ const StyledPageContentWrapper = styled.div`
   margin: 0 auto;
   padding: 30px;
   min-height: 800px;
+  position: relative;
 
   @media (max-width: 767px) {
     padding: 10px;
