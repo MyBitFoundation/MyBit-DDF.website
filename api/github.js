@@ -1,5 +1,5 @@
 import axios from 'axios';
-const END_POINT = "https://githubmybitio-cgcavnqtrq.now.sh"
+const END_POINT = "https://github.mybit.io"
 
 const GithubApi = {
   getOrgIssues: async () => {

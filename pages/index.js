@@ -12,38 +12,48 @@ import StyledAppWrapper from './StyledAppWrapper';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
 import Footer from '../components/Footer';
 
-import { Footer as FooterDetails, BountiesPerPage } from '../constants';
+import { Footer as FooterDetails, BountiesPerPage, RefreshTimeInSeconds } from '../constants';
 import GithubApi from '../api/github';
 
 export default class Home extends React.Component{
-
-  state = {
-    sideBar: false,
-    stats: [{
-        name:"Total Value of Fund",
-        loadingSize: "130"
-      }, {
-        name: "Total Payout",
-        loadingSize: "130"
-      }, {
-        name: "Open Tasks",
-        loadingSize: "50"
-      }, {
-        name: "Completed Tasks",
-        loadingSize: "50"
-      }, {
-        name: "No. of Contributors",
-        loadingSize: "50"
-      }],
-      orderBy: "Most recent",
-      selectedCategory: "Development",
-      categories: [],
-      currentPage: 0,
-      showCompletedTasks: true,
+  constructor(props){
+    super(props);
+    this.state = {
+      sideBar: false,
+      stats: [{
+          name:"Total Value of Fund",
+          loadingSize: "130"
+        }, {
+          name: "Total Payout",
+          loadingSize: "130"
+        }, {
+          name: "Open Tasks",
+          loadingSize: "50"
+        }, {
+          name: "Completed Tasks",
+          loadingSize: "50"
+        }, {
+          name: "No. of Contributors",
+          loadingSize: "50"
+        }],
+        orderBy: "Most recent",
+        selectedCategory: "Development",
+        categories: [],
+        currentPage: 0,
+        showCompletedTasks: true,
+    }
+    this.pullingIssues = false;
   }
 
+
   componentDidMount = () => {
+    this.pullingIssues = true;
     this.getIssues();
+    setInterval(() => {
+      if(this.pullingIssues) return;
+        this.pullingIssues = true;
+      this.getIssues()
+    }, RefreshTimeInSeconds * 1000);
   }
 
   setCurrentPage = currentPage => {
@@ -109,7 +119,6 @@ export default class Home extends React.Component{
       let categories = [];
       //isues that don't have a bounty
       data.issues = data.issues.filter(issue => issue.contractAddress != -1);
-
       data.issues.forEach(issue => {
         const category = issue.category;
         if(!processedIssues[category]){
@@ -127,7 +136,7 @@ export default class Home extends React.Component{
         }
         issue.labels.forEach(label => {
           //if the user has toggled the filter off before then let it be
-          if(this.state.issues && this.state.issues[category] && this.state.isssues[category].filters[label] === false){
+          if(this.state.issues && this.state.issues.category && this.state.isssues.category.filters[label] === false){
             processedIssues[category].filters[label] = false;
           }
           else if(processedIssues[category].filters[label] === undefined){
@@ -180,7 +189,7 @@ export default class Home extends React.Component{
       })
 
       this.organizeIssues(data);
-
+      this.pullingIssues = false;
     }catch(err){
       setTimeout(this.getIssues, 2000);
     }
