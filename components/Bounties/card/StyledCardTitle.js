@@ -6,7 +6,7 @@ const StyledCardTitle = styled.span`
   color: #4a4a4a;
   margin-right: 5px;
 
-  ${props => props.state === "closed" && css`
+  ${props => props.merged && css`
     color: #7d7d7d;
   `}
 `;
