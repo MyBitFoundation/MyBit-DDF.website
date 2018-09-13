@@ -1,20 +1,24 @@
 const mobileMenu = [
   {
     text: 'Developer',
-    linkTo: '/',
+    linkTo: "https://mybit.io/developer",
+    target: "_top",
   },{
     text: 'Fund',
-    linkTo: '/',
+    linkTo: "https://mybit.io/fund",
+    target: "_top",
   },{
     text: 'Applications',
-    linkTo: '/',
+    linkTo: "https://mybit.io/applications",
+    target: "_top",
   },{
     text: 'Resources',
     linkTo: '/',
   }
   ,{
-    text: 'About',
-    linkTo: '/',
+    text: 'Company',
+    linkTo: "https://mybit.io/about",
+    target: "_top",
   }
 ];
 
