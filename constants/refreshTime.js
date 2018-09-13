@@ -1,3 +1,3 @@
 const refreshTimeInSeconds = 30;
 
-export default refrehsTimeInSeconds;
+export default refreshTimeInSeconds;
