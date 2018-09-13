@@ -37,7 +37,7 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
 
     //filter by only completed tags
     if(!showCompletedTasks){
-      issuesFiltered = issuesFiltered.filter(issue => issue.state === "open");
+      issuesFiltered = issuesFiltered.filter(issue => !issue.merged);
     }
 
     sortBy(issuesFiltered, orderBy);

@@ -12,38 +12,48 @@ import StyledAppWrapper from './StyledAppWrapper';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
 import Footer from '../components/Footer';
 
-import { Footer as FooterDetails, BountiesPerPage } from '../constants';
+import { Footer as FooterDetails, BountiesPerPage, RefreshTimeInSeconds } from '../constants';
 import GithubApi from '../api/github';
 
 export default class Home extends React.Component{
-
-  state = {
-    sideBar: false,
-    stats: [{
-        name:"Total Value of Fund",
-        loadingSize: "130"
-      }, {
-        name: "Total Payout",
-        loadingSize: "130"
-      }, {
-        name: "Open Tasks",
-        loadingSize: "50"
-      }, {
-        name: "Completed Tasks",
-        loadingSize: "50"
-      }, {
-        name: "No. of Contributors",
-        loadingSize: "50"
-      }],
-      orderBy: "Most recent",
-      selectedCategory: "Development",
-      categories: [],
-      currentPage: 0,
-      showCompletedTasks: true,
+  constructor(props){
+    super(props);
+    this.state = {
+      sideBar: false,
+      stats: [{
+          name:"Total Value of Fund",
+          loadingSize: "130"
+        }, {
+          name: "Total Payout",
+          loadingSize: "130"
+        }, {
+          name: "Open Tasks",
+          loadingSize: "50"
+        }, {
+          name: "Completed Tasks",
+          loadingSize: "50"
+        }, {
+          name: "No. of Contributors",
+          loadingSize: "50"
+        }],
+        orderBy: "Most recent",
+        selectedCategory: "Development",
+        categories: [],
+        currentPage: 0,
+        showCompletedTasks: true,
+    }
+    this.pullingIssues = false;
   }
 
+
   componentDidMount = () => {
+    this.pullingIssues = true;
     this.getIssues();
+    setInterval(() => {
+      if(this.pullingIssues) return;
+        this.pullingIssues = true;
+      this.getIssues()
+    }, RefreshTimeInSeconds * 1000);
   }
 
   setCurrentPage = currentPage => {
@@ -70,15 +80,14 @@ export default class Home extends React.Component{
     }
   }
 
-  setStats = async (completedTasks, openTasks) => {
-    let stats = await GithubApi.getStats();
-    stats = [{
+  setStats = (completedTasks, openTasks, totalPayout, totalValue, contributors) => {
+    const stats = [{
         name:"Total Value of Fund",
-        value: stats.totalValue,
+        value: `$${totalValue}`,
         loadingSize: "130"
       }, {
         name: "Total Payout",
-        value: stats.totalPayout,
+        value: `$${totalPayout}`,
         loadingSize: "130"
       }, {
         name: "Open Tasks",
@@ -90,7 +99,7 @@ export default class Home extends React.Component{
         loadingSize: "50"
       }, {
         name: "No. of Contributors",
-        value: stats.contributors,
+        value: contributors,
         loadingSize: "50"
       }
     ]
@@ -102,15 +111,15 @@ export default class Home extends React.Component{
    * this method splits issues by categories and also sets it up so that
    + its easy to handle the state of each filter
    */
-   organizeIssues = (issues) => {
+   organizeIssues = (data) => {
+    try{
       let completedTasks = 0;
       let openTasks = 0;
       let processedIssues = {};
       let categories = [];
       //isues that don't have a bounty
-      issues = issues.filter(issue => issue.contractAddress != -1);
-  
-      issues.forEach(issue => {
+      data.issues = data.issues.filter(issue => issue.contractAddress != -1);
+      data.issues.forEach(issue => {
         const category = issue.category;
         if(!processedIssues[category]){
           processedIssues[category] = {issues: [issue], filters:{}};
@@ -119,7 +128,7 @@ export default class Home extends React.Component{
         else{
           processedIssues[category].issues.push(issue);
         }
-        if(issue.state === "open"){
+        if(!issue.merged){
           openTasks += 1;
         }
         else{
@@ -127,7 +136,7 @@ export default class Home extends React.Component{
         }
         issue.labels.forEach(label => {
           //if the user has toggled the filter off before then let it be
-          if(this.state.issues && this.state.issues[category] && this.state.isssues[category].filters[label] === false){
+          if(this.state.issues && this.state.issues.category && this.state.isssues.category.filters[label] === false){
             processedIssues[category].filters[label] = false;
           }
           else if(processedIssues[category].filters[label] === undefined){
@@ -136,28 +145,13 @@ export default class Home extends React.Component{
           }
         })
       });
-  
-      this.setStats(completedTasks, openTasks);
+
+      this.setStats(completedTasks, openTasks, data.totalPayoutOfFund, data.totalValueOfFund, data.numberOfUniqueContributors);
       this.setState({issues: processedIssues, categories})
-   }
-
-   getContractAddress = (issue, comments) => {
-    comments = comments.filter(comment => comment.user.login === "status-open-bounty");
-    let contractAddress = -1;
-    if(comments.length > 0){
-      let match = comments[0].body.match(ethereumRegex());
-      if(match && match.length > 0){
-        contractAddress = match[0];
-      }
+    }catch(err){
+      console.log(err)
     }
-  
-    return {
-      ...issue,
-      contractAddress,
-      value: Math.floor((Math.random() * 1000) + 100)
-    };
    }
-
 
   getCategory = (repoName) => {
     if(repoName.indexOf("tech") !== -1 || repoName.indexOf("website") !== -1)
@@ -168,40 +162,34 @@ export default class Home extends React.Component{
     else if(repoName.indexOf("marketing") !== -1)
       return "Marketing";
     else
-      return "Other";
+      return "Development";
   }
 
   getIssues = async () => {
     try{
-      let issues = await GithubApi.getOrgIssues()
-      issues = issues.map(issue => {
-        const repoUrl = issue.repository.html_url;
-        const labels = issue.labels.map(label => label);
-        const repoName = issue.repository.name
+      let data = await GithubApi.getOrgIssues()
+
+      data.issues = data.issues.map((issue, index) => {
+        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url} = issue;
         const category = this.getCategory(repoName);
-  
+
         return {
-          issueUrl: issue.html_url,
-          title: issue.title,
-          createdAt: issue.created_at,
-          number: issue.number,
-          state: issue.state,
-          repoUrl: repoUrl,
-          repoName: repoName,
+          createdAt,
+          merged,
+          repoName,
           labels,
           category,
+          contractAddress,
+          value,
+          tokenSymbol,
+          title,
+          url,
+          repoUrl: `https://github.com/MyBitFoundation/${repoName}`,
         }
       })
-  
-      issues = await Promise.all(issues.map(async issue => {
-        const comments = await GithubApi.getCommentsOfIssue(issue.repoName, issue.number);
-  
-        //TODO get value from contract address
-        return this.getContractAddress(issue, comments);
-      }));
-  
-      this.organizeIssues(issues);
-  
+
+      this.organizeIssues(data);
+      this.pullingIssues = false;
     }catch(err){
       setTimeout(this.getIssues, 2000);
     }
