@@ -5,7 +5,7 @@
     "dev": "next",
     "build": "next build",
     "export": "next export -o build",
-    "start": "cross-env PORT=8080 next start -p $PORT",
+    "start": "next start",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
