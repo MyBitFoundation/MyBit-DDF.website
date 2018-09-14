@@ -228,11 +228,11 @@ export default class Home extends React.Component{
             />
             <StyledRefreshWarning>The information on this page refreshes every 30 seconds</StyledRefreshWarning>
           </StyledPageContentWrapper>
+          <Footer
+            styling={Theme.footer}
+            footerDetails={FooterDetails}
+          />
         </StyledAppWrapper>
-        <Footer
-          styling={Theme.footer}
-          footerDetails={FooterDetails}
-        />
       </Layout>
     )
   }
