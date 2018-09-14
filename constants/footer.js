@@ -35,16 +35,16 @@ const footerColumns = [
     title: "Products",
     content: [{
         name: "SKDs",
-        linkTo: "/",
-        external: true
+        linkTo: "https://mybit.io/developer",
+        target: "_top",
       }, {
         name:"MyBit Go",
-        linkTo: "/",
+        linkTo: "https://app.mybit.io",
         external: true
       },{
         name:"Other dApps",
-        linkTo: "/",
-        external: true
+        linkTo: "https://mybit.io/applications",
+        target: "_top",
       }],
     }, {
       title: "Resources",
@@ -54,11 +54,11 @@ const footerColumns = [
         external: true
       }, {
         name:"Whitepaper",
-        linkTo: "/",
+        linkTo: "https://files.mybit.io/files/MyBit_Whitepaper_v3.0.0.pdf",
         external: true
       },{
         name:"Github",
-        linkTo: "/",
+        linkTo: "https://github.com/MyBitFoundation",
         external: true
       }],
       isColumn: true,
@@ -66,30 +66,15 @@ const footerColumns = [
       title: "About",
       content: [{
         name: "Company",
-        linkTo: "/",
-        external: true
+        linkTo: "https://mybit.io/about",
+        target: "_top",
       }, {
         name:"Token",
-        linkTo: "/",
-        external: true
-      },{
-        name:"Blog",
-        linkTo: "/",
-        external: true
-      }],
-    }, {
-      title: "Resources",
-      content: [{
-        name: "Tokensale",
-        linkTo: "/",
-        external: true
+        linkTo: "https://mybit.io/token",
+        target: "_top",
       }, {
-        name:"Whitepaper",
-        linkTo: "/",
-        external: true
-      },{
-        name:"Github",
-        linkTo: "https://github.com/MyBitFoundation",
+        name:"Blog",
+        linkTo: "https://medium.com/mybit-dapp",
         external: true
       }],
     }, {
@@ -134,7 +119,7 @@ const footerColumns = [
         name: "Registration no. CHE-177.186.963",
       }, {
         name:"Terms and Conditions",
-        linkTo: "/",
+        linkTo: "https://github.com/MyBitFoundation/MyBit.io/blob/develop/TOC.md",
         external: true,
         styling: {
           textDecoration: "underline",
