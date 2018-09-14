@@ -16,6 +16,7 @@ import Button from '../../Button';
 import { GetTimeAgo } from '../../../utils';
 import Icon from '../../Icon';
 import StyledCheckmark from './StyledCheckmark';
+import {OrgName} from '../../../constants';
 
 const generateLabels = (labels) =>
   <StyledLabels>
@@ -55,7 +56,7 @@ const Card = ({title, labels, repoName, repoUrl, value, createdAt, url, styling,
       rel="noopener noreferrer"
       merged={merged}
     >
-      {repoName}
+      {`${OrgName}/${repoName}`}
     </StyledRepoName>
     <StyledFooter>
       <div style={{marginTop: "16px"}}>
