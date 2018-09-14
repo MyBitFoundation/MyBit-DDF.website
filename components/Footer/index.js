@@ -45,9 +45,9 @@ const handleColumn = section =>
           getRowIcon(content.src, content.srcHover, content.alt, content.styling)
         )
       }
-      else if(content.name && content.linkTo && content.external){
+      else if(content.name && content.linkTo && (content.external || content.target)){
         return(
-          <Anchor key={content.linkTo} href={content.linkTo} target='_blank' rel='noopener noreferrer' styling={content.styling || {}}>
+          <Anchor key={content.linkTo} href={content.linkTo} target={content.target || "_blank"} rel='noopener noreferrer' styling={content.styling || {}}>
             {content.name}
           </Anchor>
         )

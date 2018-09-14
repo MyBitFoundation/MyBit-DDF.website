@@ -10,6 +10,12 @@ const StyledNavigationBar = styled.div`
     font-size: 16px;
   }
 
+  .ant-menu-item-selected{
+    a{
+      color: ${props => props.styling ? props.styling.itemSelectedColor : "inherit"} !important;
+    }
+  }
+
   .ant-menu-overflowed-submenu{
     display: none;
   }
