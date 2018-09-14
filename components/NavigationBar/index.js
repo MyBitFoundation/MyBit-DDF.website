@@ -18,7 +18,7 @@ export default class NavigationBar extends React.Component{
 
   render() {
     return (
-      <StyledNavigationBar>
+      <StyledNavigationBar styling={this.props.styling}>
         <Menu
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}

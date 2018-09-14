@@ -1,26 +1,32 @@
 const navigationItems = [
   {
     name: "Developer",
-    linkTo: "/developer"
+    linkTo: "https://mybit.io/developer",
+    target: "_top",
   }, {
     name: "Fund",
-    linkTo: "/fund"
+    linkTo: "https://mybit.io/fund",
+    target: "_top",
   }, {
     name: "Applications",
-    linkTo: "/applications"
+    linkTo: "https://mybit.io/applications",
+    target: "_top",
   }, {
     name: "Resources",
     iconRight: "down",
     subNavigation: [
       {
         name: "Tokensale",
-        linkTo: "/first-resource"
+        linkTo: "/first-resource",
+        external: true,
       }, {
         name: "Whitepaper",
-        linkTo: "/first-resource"
+        linkTo: "https://files.mybit.io/files/MyBit_Whitepaper_v3.0.0.pdf",
+        external: true,
       }, {
         name: "Github",
-        linkTo: "/first-resource"
+        linkTo: "https://github.com/MyBitFoundation",
+        external: true,
       }
     ]
   }, {
@@ -29,13 +35,16 @@ const navigationItems = [
     subNavigation: [
       {
         name: "Company",
-        linkTo: "/first-resource"
+        linkTo: "https://mybit.io/about",
+        target: "_top",
       }, {
         name: "Token",
-        linkTo: "/first-resource"
+        linkTo: "https://mybit.io/token",
+        target: "_top",
       }, {
         name: "Blog",
-        linkTo: "/first-resource"
+        linkTo: "https://medium.com/mybit-dapp",
+        external: true,
       }
     ]
   }

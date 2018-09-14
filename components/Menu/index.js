@@ -10,8 +10,9 @@ export default class Menu extends React.Component{
 
   getMenuItem = (item) => {
     return (
-      <MenuItem key={item.name}>
-        {item.name}
+      <MenuItem styling={this.props.styling} key={item.name}>
+        {item.linkTo ? <a href={item.linkTo} target={item.target || "_blank"} key={item.name}>{item.name}</a>
+        : item.name}
       </MenuItem>
     )
   }
@@ -20,7 +21,10 @@ export default class Menu extends React.Component{
     const iconRight = item.iconRight && <Icon type={item.iconRight} isRight />;
     const iconLeft = item.iconLeft && <Icon type={item.iconLeft} />;
     const subItems = item.subNavigation.map(subItem => (
-      <MenuItem key={subItem.name}>{subItem.name}</MenuItem>
+      <MenuItem key={subItem.name}>
+        {subItem.linkTo ? <a href={subItem.linkTo} target={subItem.target || "_blank"} key={subItem.name}>{subItem.name}</a>
+          : subItem.name}
+      </MenuItem>
     ));
 
     return(
@@ -36,7 +40,6 @@ export default class Menu extends React.Component{
 
   render(){
     const {onClick, items, selectedKeys, mode, className, styling} = this.props;
-
     return(
       <StyledMenu styling={styling}>
         <MenuAnt
