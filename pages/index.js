@@ -48,6 +48,7 @@ export default class Home extends React.Component{
 
 
   componentDidMount = () => {
+    this.checkStorageForCategory();
     this.setState({pullingIssues: true})
     this.getIssues();
     setInterval(() => {
@@ -55,6 +56,11 @@ export default class Home extends React.Component{
         this.setState({pullingIssues: true})
       this.getIssues()
     }, RefreshTimeInSeconds * 1000);
+  }
+
+  checkStorageForCategory = () => {
+    const selectedCategory = window.localStorage.getItem('ddf-category');
+    selectedCategory && this.setState({selectedCategory});
   }
 
   setCurrentPage = currentPage => {
@@ -75,11 +81,9 @@ export default class Home extends React.Component{
     this.setState({issues: tmpIssues});
   }
 
-  setCategory = selectedCategory => {
-    if(this.state.selectedCategory !== selectedCategory){
-      this.setState({selectedCategory, currentPage: 0})
-    }
-  }
+  setCategory = selectedCategory =>
+    this.state.selectedCategory !== selectedCategory &&
+      window.localStorage.setItem('ddf-category', selectedCategory) ||  this.setState({selectedCategory, currentPage: 0})
 
   setStats = (completedTasks, openTasks, totalPayout, totalValue, contributors) => {
     const stats = [{
