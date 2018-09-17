@@ -19,7 +19,7 @@ const SidebarMobile = ({links, open, closePopup}) => {
           })
         }
 
-          target={link.external && "_blank"}
+          target={link.target || "_blank"}
           rel="noopener noreferrer"
         >
           {link.text}
