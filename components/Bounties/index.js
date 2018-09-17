@@ -96,7 +96,7 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
       <div>
         {header}
         <StyledCards>
-          {issuesFiltered.map(bounty => <Card {...bounty} key={`${bounty.name} ${bounty.createdAt}`} styling={styling.buttons} />)}
+          {issuesFiltered.map(bounty => <Card {...bounty} key={`${bounty.title} ${bounty.createdAt}`} styling={styling.buttons} />)}
         </StyledCards>
         <StyledPagination>
           <Pagination
