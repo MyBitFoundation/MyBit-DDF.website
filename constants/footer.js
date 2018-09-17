@@ -34,7 +34,7 @@ const footerColumns = [
   }, {
     title: "Products",
     content: [{
-        name: "SKDs",
+        name: "SDKs",
         linkTo: "https://mybit.io/developer",
         target: "_top",
       }, {
