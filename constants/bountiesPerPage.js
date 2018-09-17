@@ -1,3 +1,3 @@
-const bountiesPerPage = 3;
+const bountiesPerPage = 12;
 
 export default bountiesPerPage;
