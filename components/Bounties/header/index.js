@@ -35,7 +35,7 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
         Tasks
       </StyledTitle>
       <StyledSubHeader>
-      Chose your expertise
+      Choose your expertise
       </StyledSubHeader>
       <StyledCategories>
         <Menu
