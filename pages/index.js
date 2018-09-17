@@ -48,6 +48,7 @@ export default class Home extends React.Component{
 
 
   componentDidMount = () => {
+    this.checkStorageForCategory();
     this.setState({pullingIssues: true})
     this.getIssues();
     setInterval(() => {
@@ -55,6 +56,13 @@ export default class Home extends React.Component{
         this.setState({pullingIssues: true})
       this.getIssues()
     }, RefreshTimeInSeconds * 1000);
+  }
+
+  checkStorageForCategory = () => {
+    const selectedCategory = window.localStorage.getItem('ddf-category');
+    if(selectedCategory){
+      this.setState({selectedCategory});
+    }
   }
 
   setCurrentPage = currentPage => {
@@ -77,6 +85,7 @@ export default class Home extends React.Component{
 
   setCategory = selectedCategory => {
     if(this.state.selectedCategory !== selectedCategory){
+      window.localStorage.setItem('ddf-category', selectedCategory);
       this.setState({selectedCategory, currentPage: 0})
     }
   }
