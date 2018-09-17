@@ -60,9 +60,7 @@ export default class Home extends React.Component{
 
   checkStorageForCategory = () => {
     const selectedCategory = window.localStorage.getItem('ddf-category');
-    if(selectedCategory){
-      this.setState({selectedCategory});
-    }
+    selectedCategory && this.setState({selectedCategory});
   }
 
   setCurrentPage = currentPage => {
@@ -83,12 +81,9 @@ export default class Home extends React.Component{
     this.setState({issues: tmpIssues});
   }
 
-  setCategory = selectedCategory => {
-    if(this.state.selectedCategory !== selectedCategory){
-      window.localStorage.setItem('ddf-category', selectedCategory);
-      this.setState({selectedCategory, currentPage: 0})
-    }
-  }
+  setCategory = selectedCategory =>
+    this.state.selectedCategory !== selectedCategory &&
+      window.localStorage.setItem('ddf-category', selectedCategory) ||  this.setState({selectedCategory, currentPage: 0})
 
   setStats = (completedTasks, openTasks, totalPayout, totalValue, contributors) => {
     const stats = [{
