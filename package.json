@@ -28,7 +28,7 @@
     "react-placeholder": "3.0.1",
     "react-router-dom": "4.3.1",
     "sinon": "6.3.3",
-    "styled-components": "3.4.6"
+    "styled-components": "3.4.8"
   },
   "license": "MIT",
   "devDependencies": {
