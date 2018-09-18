@@ -11,13 +11,15 @@ import Pagination from '../Pagination';
 
 const sortBy = (items, type) => {
   switch(type){
-    case "Most recent": items.sort((a, b) => a.createdAt < b.createdAt); return;
-    case "Highest value": items.sort((a, b) => a.value < b.value); return;
-    case "Lowest value": items.sort((a, b) => a.value > b.value); return;
+    case "Most recent": items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); return;
+    case "Highest value": items.sort((a, b) => b.value - a.value); return;
+    case "Lowest value": items.sort((a, b) => a.value - b.value); return;
   }
 }
 
-const Bounties = ({styling, issues, categories, selectedCategory, setCategory, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks, bountiesPerPage, currentPage, setCurrentPage, orderBy, handleOrderByClicked}) => {
+
+
+const Bounties = ({styling, issues, categories, selectedCategory, setCategory, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks, showAmountInCrypto, handleShowAmountInCrypto, bountiesPerPage, currentPage, setCurrentPage, orderBy, handleOrderByClicked}) => {
 
   let issuesFiltered = undefined;
   let totalIssuesFiltered = 0;
@@ -60,6 +62,8 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
       issues={issues}
       handleClickedFilter={handleClickedFilter}
       showCompletedTasks={showCompletedTasks}
+      showAmountInCrypto={showAmountInCrypto}
+      handleShowAmountInCrypto={handleShowAmountInCrypto}
       handleShowCompletedTasks={handleShowCompletedTasks}
       issuesFiltered={issuesFiltered}
       currentPage={currentPage}
@@ -96,7 +100,14 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
       <div>
         {header}
         <StyledCards>
-          {issuesFiltered.map(bounty => <Card {...bounty} key={`${bounty.title} ${bounty.createdAt}`} styling={styling.buttons} />)}
+          {issuesFiltered.map(bounty =>
+            <Card
+              {...bounty}
+              key={`${bounty.title} ${bounty.createdAt}`}
+              styling={styling.buttons}
+              showAmountInCrypto={showAmountInCrypto}
+            />
+          )}
         </StyledCards>
         <StyledPagination>
           <Pagination

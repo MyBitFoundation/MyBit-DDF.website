@@ -5,16 +5,15 @@ import StyledCategories from './StyledCategories';
 import StyledFilters from './StyledFilters';
 import StyledListHeader from './StyledListHeader';
 import StyledItemsCounter from './StyledItemsCounter';
-import StyledLabelCompletedTasks from './StyledLabelCompletedTasks';
+import StyledLabelForSwitch from './StyledLabelForSwitch';
 import StyledListHeaderLeft from './StyledListHeaderLeft';
-import StyledSwitch from './StyledSwitch';
 import Menu from '../../Menu';
-import Switch from '../../Switch';
+import SwitchWithLabel from './SwitchWithLabel';
 import Filter from '../../Filter';
 import Dropdown from '../../Dropdown';
 import { Categories } from '../../../constants';
 
-const Header = ({styling, categories, selectedCategory, setCategory, issues, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks, issuesFiltered, bountiesPerPage, currentPage, totalIssuesFiltered, orderBy, handleOrderByClicked}) => {
+const Header = ({styling, categories, selectedCategory, setCategory, issues, handleClickedFilter, showCompletedTasks, handleShowCompletedTasks, handleShowAmountInCrypto, showAmountInCrypto, issuesFiltered, bountiesPerPage, currentPage, totalIssuesFiltered, orderBy, handleOrderByClicked}) => {
 
   let max = 0;
   let min = 0;
@@ -73,17 +72,27 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
             <StyledItemsCounter>
               {issuesFiltered ? `Showing ${min}-${max} of ${totalIssuesFiltered}` : "Showing 0 of 0"}
             </StyledItemsCounter>
-            <StyledSwitch>
-              <Switch
+            <React.Fragment>
+              <SwitchWithLabel
                 size="small"
                 checked={showCompletedTasks}
                 styling={styling.switch}
-                onChange={(checked) => handleShowCompletedTasks(checked)}
+                handleClick={handleShowCompletedTasks}
+                label="Show completed tasks"
+                key="rma2"
               />
-              <StyledLabelCompletedTasks>
-                Show completed tasks
-              </StyledLabelCompletedTasks>
-            </StyledSwitch>
+              <SwitchWithLabel
+                size="small"
+                checked={showAmountInCrypto}
+                styling={styling.switch}
+                handleClick={handleShowAmountInCrypto}
+                label="Display amount in crypto"
+                key="put2"
+                stylingSwitch={{
+                  marginLeft: "20px",
+                }}
+              />
+            </React.Fragment>
           </StyledListHeaderLeft>
         </div>
         <div>

@@ -18,6 +18,20 @@ import Icon from '../../Icon';
 import StyledCheckmark from './StyledCheckmark';
 import {OrgName} from '../../../constants';
 
+const getValueLabel = (value, mybitInUsd, tokenSymbol, showAmountInCrypto, merged) =>
+  <div>
+    <StyledValueLabel merged={merged}>
+        Value
+      </StyledValueLabel>
+      <StyledValue merged={merged}>
+      {
+        showAmountInCrypto ?
+          `${value.toFixed(2).toLocaleString()} ${tokenSymbol}` :
+          `$${mybitInUsd.toLocaleString()}`
+      }
+    </StyledValue>
+  </div>
+
 const generateLabels = (labels) =>
   <StyledLabels>
     {labels.map(label => (
@@ -32,7 +46,7 @@ const getTimeLabel = (time) =>
     {GetTimeAgo(time)}
   </StyledCardTime>
 
-const Card = ({title, labels, repoName, repoUrl, value, createdAt, url, styling, merged, tokenSymbol}) =>
+const Card = ({title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, url, styling, merged, tokenSymbol, showAmountInCrypto}) =>
   <StyledCard>
     <StyledHeader>
       <div>
@@ -60,14 +74,8 @@ const Card = ({title, labels, repoName, repoUrl, value, createdAt, url, styling,
     </StyledRepoName>
     <StyledFooter>
       <div style={{marginTop: "16px"}}>
-        <StyledValueLabel merged={merged}>
-          Value
-        </StyledValueLabel>
-        <StyledValue merged={merged}>
-          {tokenSymbol}{' '}{value}
-        </StyledValue>
+        {getValueLabel(value, mybitInUsd, tokenSymbol, showAmountInCrypto, merged)}
       </div>
-
       {!merged &&
         <StyledButtonChallenge>
           <Button
@@ -87,11 +95,13 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   repoName: PropTypes.string.isRequired,
   repoUrl: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
   createdAt: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   tokenSymbol: PropTypes.string.isRequired,
   merged: PropTypes.bool.isRequired,
+  showAmountInCrypto: PropTypes.bool.isRequired,
+  mybitInUsd: PropTypes.string.isRequired,
 };
 
 export default Card;
