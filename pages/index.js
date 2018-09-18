@@ -43,11 +43,13 @@ export default class Home extends React.Component{
         currentPage: 0,
         showCompletedTasks: true,
         pullingIssues: false,
+        showAmountInCrypto: false,
     }
   }
 
 
   componentDidMount = () => {
+    this.checkStorageForCurrencyType();
     this.checkStorageForCategory();
     this.setState({pullingIssues: true})
     this.getIssues();
@@ -56,6 +58,11 @@ export default class Home extends React.Component{
         this.setState({pullingIssues: true})
       this.getIssues()
     }, RefreshTimeInSeconds * 1000);
+  }
+
+  checkStorageForCurrencyType = () => {
+    const showAmountInCrypto = JSON.parse(window.localStorage.getItem('ddf-showAmountInCrypto'));
+    this.setState({showAmountInCrypto});
   }
 
   checkStorageForCategory = () => {
@@ -73,6 +80,11 @@ export default class Home extends React.Component{
 
   handleShowCompletedTasks = showCompletedTasks => {
     this.setState({showCompletedTasks})
+  }
+
+  handleShowAmountInCrypto = showAmountInCrypto => {
+    window.localStorage.setItem('ddf-showAmountInCrypto', showAmountInCrypto);
+    this.setState({showAmountInCrypto});
   }
 
   handleClickedFilter = (name, checked) => {
@@ -175,7 +187,7 @@ export default class Home extends React.Component{
       let data = await GithubApi.getOrgIssues()
 
       data.issues = data.issues.map((issue, index) => {
-        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url} = issue;
+        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url, mybitInUsd} = issue;
         const category = this.getCategory(repoName);
 
         return {
@@ -189,6 +201,7 @@ export default class Home extends React.Component{
           tokenSymbol,
           title,
           url,
+          mybitInUsd,
           repoUrl: `https://github.com/MyBitFoundation/${repoName}`,
         }
       })
@@ -224,6 +237,8 @@ export default class Home extends React.Component{
               handleClickedFilter={this.handleClickedFilter}
               showCompletedTasks={this.state.showCompletedTasks}
               handleShowCompletedTasks={this.handleShowCompletedTasks}
+              handleShowAmountInCrypto={this.handleShowAmountInCrypto}
+              showAmountInCrypto={this.state.showAmountInCrypto}
               bountiesPerPage={BountiesPerPage}
               currentPage={this.state.currentPage}
               setCurrentPage={this.setCurrentPage}
