@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-const StyledLabelCompletedTasks = styled.span`
+const StyledLabelForSwitch = styled.span`
   font-size: 14px;
   color: black;
   margin-left: 5px;
 `;
 
-export default StyledLabelCompletedTasks;
+export default StyledLabelForSwitch;
