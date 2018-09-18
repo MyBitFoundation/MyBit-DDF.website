@@ -64,7 +64,7 @@ const Card = ({title, labels, repoName, repoUrl, value, createdAt, url, styling,
           Value
         </StyledValueLabel>
         <StyledValue merged={merged}>
-          {tokenSymbol}{' '}{value}
+          {value.toFixed(2)}{' '}{tokenSymbol}
         </StyledValue>
       </div>
 
