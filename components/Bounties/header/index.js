@@ -32,10 +32,10 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
   return (
     <div>
       <StyledTitle>
-        Tasks
+        Bounties
       </StyledTitle>
       <StyledSubHeader>
-      Chose your expertise
+      Choose your expertise
       </StyledSubHeader>
       <StyledCategories>
         <Menu
