@@ -19,15 +19,15 @@ import StyledCheckmark from './StyledCheckmark';
 import {OrgName} from '../../../constants';
 
 const getValueLabel = (value, mybitInUsd, tokenSymbol, showAmountInCrypto, merged) =>
-  <div>
+  <div style={{marginTop: "16px"}}>
     <StyledValueLabel merged={merged}>
         Value
       </StyledValueLabel>
       <StyledValue merged={merged}>
       {
         showAmountInCrypto ?
-          `${value.toFixed(2).toLocaleString()} ${tokenSymbol}` :
-          `$${mybitInUsd.toLocaleString()}`
+          `${Number(value.toFixed(2)).toLocaleString()} ${tokenSymbol}` :
+          `$${Number(mybitInUsd).toLocaleString()}`
       }
     </StyledValue>
   </div>
@@ -73,9 +73,7 @@ const Card = ({title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, u
       {`${OrgName}/${repoName}`}
     </StyledRepoName>
     <StyledFooter>
-      <div style={{marginTop: "16px"}}>
-        {getValueLabel(value, mybitInUsd, tokenSymbol, showAmountInCrypto, merged)}
-      </div>
+      {getValueLabel(value, mybitInUsd, tokenSymbol, showAmountInCrypto, merged)}
       {!merged &&
         <StyledButtonChallenge>
           <Button
