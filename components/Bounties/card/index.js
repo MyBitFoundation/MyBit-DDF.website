@@ -16,21 +16,28 @@ import Button from '../../Button';
 import { GetTimeAgo } from '../../../utils';
 import Icon from '../../Icon';
 import StyledCheckmark from './StyledCheckmark';
+import StyledNotYetFunded from './StyledNotYetFunded';
 import {OrgName} from '../../../constants';
 
 const getValueLabel = (value, mybitInUsd, tokenSymbol, showAmountInCrypto, merged) =>
-  <div style={{marginTop: "16px"}}>
-    <StyledValueLabel merged={merged}>
-        Value
-      </StyledValueLabel>
-      <StyledValue merged={merged}>
-      {
-        showAmountInCrypto ?
-          `${Number(value.toFixed(2)).toLocaleString()} ${tokenSymbol}` :
-          `$${Number(mybitInUsd).toLocaleString()}`
-      }
-    </StyledValue>
-  </div>
+  value > 0 ?
+    <div style={{marginTop: "16px"}}>
+      <StyledValueLabel merged={merged}>
+          Value
+        </StyledValueLabel>
+        <StyledValue merged={merged}>
+        {
+          showAmountInCrypto ?
+            `${Number(value.toFixed(2)).toLocaleString()} ${tokenSymbol}` :
+            `$${Number(mybitInUsd).toLocaleString()}`
+        }
+      </StyledValue>
+    </div>
+  :
+    <StyledNotYetFunded>
+      <p>Not yet funded</p>
+    </StyledNotYetFunded>
+
 
 const generateLabels = (labels) =>
   <StyledLabels>
