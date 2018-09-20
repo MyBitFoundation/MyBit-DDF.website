@@ -41,7 +41,7 @@ export default class Home extends React.Component{
         selectedCategory: "Development",
         categories: [],
         currentPage: 0,
-        showCompletedTasks: true,
+        showCompletedTasks: false,
         pullingIssues: false,
         showAmountInCrypto: false,
     }
