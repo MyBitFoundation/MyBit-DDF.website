@@ -13,7 +13,7 @@ import StyledPageContentWrapper from './StyledPageContentWrapper';
 import Footer from '../components/Footer';
 import StyledRefreshWarning from './StyledRefreshWarning';
 
-import { Footer as FooterDetails, BountiesPerPage, RefreshTimeInSeconds } from '../constants';
+import { BountiesPerPage, RefreshTimeInSeconds } from '../constants';
 import GithubApi from '../api/github';
 
 export default class Home extends React.Component{
@@ -249,7 +249,6 @@ export default class Home extends React.Component{
           </StyledPageContentWrapper>
           <Footer
             styling={Theme.footer}
-            footerDetails={FooterDetails}
           />
         </StyledAppWrapper>
       </Layout>
