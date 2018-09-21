@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import StyledNavigationBar from './StyledNavigationBar';
 import Menu from '../Menu';
 import Img from '../Img';
-import { NavigationItems, MobileMenu } from '../../constants';
+import { NavigationItems } from '../../constants';
 import SidebarMobile from './SidebarMobile';
 
 export default class NavigationBar extends React.Component{
@@ -40,7 +40,8 @@ export default class NavigationBar extends React.Component{
       <SidebarMobile
         open={this.props.sidebarOpen}
         closePopup={this.props.handleClickMobileMenu}
-        links={MobileMenu}
+        links={NavigationItems}
+        styling={this.props.styling}
       />
 
       </StyledNavigationBar>
