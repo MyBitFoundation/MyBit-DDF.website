@@ -4,8 +4,9 @@ import classNames from 'classnames'
 import StyledMobileMenu from './StyledMobileMenu';
 import StyledIconList from './StyledIconList';
 import { SocialIcons } from '../../constants';
+import Menu from '../Menu';
 
-const SidebarMobile = ({links, open, closePopup}) => {
+const SidebarMobile = ({links, open, closePopup, styling}) => {
 
   const linksToRender = links.map((link) => {
       return(
@@ -71,7 +72,13 @@ const SidebarMobile = ({links, open, closePopup}) => {
           >
             &times;
           </a>
-        {linksToRender}
+          <Menu
+            onClick={() => {}}
+            selectedKeys={[]}
+            items={links}
+            styling={styling}
+            mode="inline"
+          />
         {socialToRender}
       </div>
     </StyledMobileMenu>
