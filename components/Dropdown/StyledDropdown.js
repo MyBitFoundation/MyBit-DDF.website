@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { injectGlobal } from 'styled-components';
+import styled, { injectGlobal } from 'styled-components'
 import Theme from '../Theme';
 
 injectGlobal`
