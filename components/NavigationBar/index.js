@@ -17,6 +17,12 @@ export default class NavigationBar extends React.Component{
   }
 
   render() {
+    const { styling } = this.props;
+
+    //we can't just modify styling as that will have an effect on other styling of unrelated components
+    const stylingCustom = Object.assign({}, styling);
+    stylingCustom.itemSelectedColor = "#ffffff";
+
     return (
       <StyledNavigationBar styling={this.props.styling}>
         <Menu
@@ -24,7 +30,7 @@ export default class NavigationBar extends React.Component{
           selectedKeys={[this.state.current]}
           mode="horizontal"
           items={NavigationItems}
-          styling={this.props.styling}
+          styling={stylingCustom}
           className="navigation--is-desktop"
         />
         <div
