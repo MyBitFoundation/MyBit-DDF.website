@@ -8,6 +8,15 @@ const SubMenu = styled(SubMenuAnt)`
   .ant-menu-submenu-title{
     padding: 0px 0px;
   }
+
+  .ant-menu-submenu-title:hover{
+    color: ${props => props.styling ? props.styling.color : "inherit"};
+  }
+
+  .ant-menu-submenu-title{
+   color: ${props => props.styling ? props.styling.color : "inherit"};
+  }
+
 `;
 
 export default SubMenu;

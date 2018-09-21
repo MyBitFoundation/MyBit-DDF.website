@@ -37,10 +37,10 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
       return flag;
     });
 
-    //filter by only completed tags
-    if(!showCompletedTasks){
-      issuesFiltered = issuesFiltered.filter(issue => !issue.merged);
-    }
+    //filter by completed tasks or not completed tasks
+    issuesFiltered = showCompletedTasks ?
+      issuesFiltered.filter(issue => issue.merged)
+      : issuesFiltered.filter(issue => !issue.merged);
 
     sortBy(issuesFiltered, orderBy);
 

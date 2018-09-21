@@ -14,6 +14,7 @@ const StyledMobileMenu = styled.div`
     visibility: visible;
     opacity: 1;
     transition: height 0.35s ease-in 200ms;
+    overflow: hidden;
 
     &:before{
       position: absolute;
@@ -77,90 +78,42 @@ const StyledMobileMenu = styled.div`
       }
     }
 
-    &__overlay-link{
+    .ant-menu:nth-child(1){
+      margin-top: 50px;
+    }
+
+    .ant-menu-sub li{
+      margin-bottom: 5px;
+    }
+
+    .ant-menu-item,
+    .ant-menu-submenu-title{
       text-decoration: none;
-      color: inherit;
       position: relative;
       font-family: 'Roboto';
-      font-size: 23px;
-      color: #ffffff;
+      font-size: 20px;
       display: block;
       width: max-content;
-      margin-bottom: 18px;
-      transition: opacity 0.35s ease-out, transform 0.35s ease-out, visibility 0.35s ease-out;;
-      transform: scale(1.5) translateY(-30px);
-      opacity: 0;
-      visibility: hidden;
       margin-left: 30px;
+    }
 
-      &:nth-child(2){
-        transition-delay: 250ms;
-        margin-top: 50px;
-      }
-
-      &:nth-child(3){
-        transition-delay: 200ms;
-      }
-
-      &:nth-child(4){
-        transition-delay: 150ms;
-      }
-
-      &:nth-child(5){
-        transition-delay: 100ms;
-      }
-
-      &:nth-child(6){
-        transition-delay: 50ms;
-      }
-
-      &--is-visible{
-        transform: scale(1) translateY(50px);
+    .ant-menu-item,
+    .ant-menu-submenu-title{
         opacity: 1;
         visibility: visible;
       }
-
-      &--is-visible:nth-child(2){
-        transition-delay: 450ms;
-      }
-
-      &--is-visible:nth-child(3){
-        transition-delay: 500ms;
-      }
-
-      &--is-visible:nth-child(4){
-        transition-delay: 550ms;
-      }
-
-      &--is-visible:nth-child(5){
-        transition-delay: 600ms;
-      }
-
-      &--is-visible:nth-child(6){
-        transition-delay: 650ms;
-      }
     }
 
-    &__overlay-link:hover{
-      color: #ffffff;
+    .ant-menu-sub .ant-menu-item[role="menuitem"]{
+      font-size: 16px;
     }
 
-    &__overlay-link:after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: -3px;
-      left: 0;
-      background-color: white;
-      visibility: hidden;
-      transform: scaleX(0);
-      transition: all 0.3s ease-in-out 0s;
+    .ant-menu-submenu-title{
+      background-color: transparent;
     }
 
-    &__overlay-link:hover:after {
-      visibility: visible;
-      transform: scaleX(1);
+    .ant-menu-submenu-arrow{
+      display: none;
     }
   }
 `;
