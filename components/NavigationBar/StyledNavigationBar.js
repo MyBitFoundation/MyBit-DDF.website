@@ -10,14 +10,20 @@ const StyledNavigationBar = styled.div`
     font-size: 16px;
   }
 
-  .ant-menu-item-selected{
-    a{
-      color: ${props => props.styling ? props.styling.itemSelectedColor : "inherit"} !important;
-    }
-  }
-
   .ant-menu-overflowed-submenu{
     display: none;
+  }
+
+  .ant-menu-horizontal > .ant-menu-item > a:hover {
+      color: #ffffff;
+  }
+
+  .ant-menu-item-selected{
+    color: #ffffff;
+  }
+
+  .ant-menu-item:hover{
+    color: #ffffff;
   }
 
   @media (max-width: 1000px) {
