@@ -28,7 +28,7 @@ export default class Menu extends React.Component{
     ));
 
     return(
-      <SubMenu key={item.name} title={<span>{iconLeft}{item.name}{iconRight}</span>}>
+      <SubMenu styling={{color: "#ffffff"}} key={item.name} title={<span>{iconLeft}{item.name}{iconRight}</span>}>
         {subItems}
       </SubMenu>
     )
