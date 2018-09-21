@@ -28,9 +28,20 @@ const footerColumns = [
         external: true
       }
     ],
-    styling:{
-      hideAt: "1100px",
-    }
+    styling:`
+      @media (max-width: 1000px) {
+        display: none;
+      }
+      @media (max-width: 900px) {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        a{
+          margin: 10px;
+        }
+      }
+    `,
   }, {
     title: "Products",
     content: [{
@@ -46,6 +57,11 @@ const footerColumns = [
         linkTo: "https://mybit.io/applications",
         target: "_top",
       }],
+    styling: `
+      @media (max-width: 900px) {
+        display: none;
+      }
+    `,
     }, {
       title: "Resources",
       content: [{
@@ -61,7 +77,10 @@ const footerColumns = [
         linkTo: "https://github.com/MyBitFoundation",
         external: true
       }],
-      isColumn: true,
+      styling: `
+        @media (max-width: 900px) {
+          display: none;
+        }`,
     }, {
       title: "About",
       content: [{
@@ -77,6 +96,10 @@ const footerColumns = [
         linkTo: "https://medium.com/mybit-dapp",
         external: true
       }],
+      styling: `
+        @media (max-width: 900px) {
+          display: none;
+        }`,
     }, {
       title: "Social",
       content: [{
@@ -99,7 +122,11 @@ const footerColumns = [
         name:"Twitter",
         linkTo: "https://twitter.com/MyBit_DApp/",
         external: true
-      }]
+      }],
+      styling: `
+        @media (max-width: 900px) {
+          display: none;
+        }`,
     }, {
       content: [{
         src:"/static/logo.svg",
@@ -121,24 +148,35 @@ const footerColumns = [
         name:"Terms and Conditions",
         linkTo: "https://github.com/MyBitFoundation/MyBit.io/blob/develop/TOC.md",
         external: true,
-        styling: {
-          textDecoration: "underline",
-        }
+        styling: `
+          text-decoration: underline;
+        `,
       }],
-      styling:{
-        textAlign: "right",
-      },
+      styling:`
+        text-align: right;
+        @media (max-width: 900px) {
+          text-align: center;
+
+          div{
+            display: none;
+          }
+        }`
+      ,
     },
 ]
 
-const footer = {
+const footerDetails = {
   sections: [{
     content: footerColumns,
     columns: true,
-    breakAt: "900px",
+    styling: `
+      @media (max-width: 900px) {
+        flex-direction: column;
+      }
+    `,
   }, {
     content: ["Copyright © MyBit Foundation 2018. All Rights Reserved."],
   }]
 }
 
-export default footer;
+export default footerDetails;

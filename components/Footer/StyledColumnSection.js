@@ -5,9 +5,7 @@ const StyledColumnSection = styled.div`
   margin: 0 auto;
   justify-content: space-between;
 
-  @media (max-width: ${props => props.styling.breakAt || "900px"}) {
-    flex-direction: column;
-  }
+  ${props => props.styling}
 `
 
 export default StyledColumnSection;

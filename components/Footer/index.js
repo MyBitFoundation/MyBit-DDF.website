@@ -8,6 +8,7 @@ import StyledIcon from './StyledIcon';
 import StyledRow from './StyledRow';
 import StyledColumn from './StyledColumn';
 import Anchor from './Anchor';
+import footerDetails from './footerDetails';
 
 const getRowIcon = (src, srcHover, alt, styling) => {
   return (
@@ -76,7 +77,7 @@ const handleRow = section => (
 )
 
 const handleSectionWithColumns = section =>
-  <StyledColumnSection styling={{breakAt: section.breakAt}}>
+  <StyledColumnSection styling={section.styling}>
     {section.content.map(handleColumn)}
   </StyledColumnSection>
 
@@ -85,8 +86,8 @@ const handleSections = (section) => {
   return section.columns ? handleSectionWithColumns(section) : handleRow(section);
 }
 
-const Footer = ({styling, footerDetails}) => {
-  const { sections } = footerDetails;
+const Footer = ({styling}) => {
+  const {sections} = footerDetails;
   return(
     <StyledFooter styling={styling}>
       <StyledFooterWrapper styling={styling}>
@@ -97,8 +98,7 @@ const Footer = ({styling, footerDetails}) => {
 }
 
 Footer.propTypes = {
-  styling: PropTypes.object.isRequired,
-  footerDetails: PropTypes.object.isRequired,
+  styling: PropTypes.object.isRequired
 };
 
 export default Footer;

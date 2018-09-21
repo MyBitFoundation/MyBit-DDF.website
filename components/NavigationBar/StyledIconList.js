@@ -27,19 +27,14 @@ const StyledIconList = styled.div`
         background-size: contain;
       }
 
-      @media (max-width: 700px) {
-        width: 35px;
-        height: 35px;
-      }
-
       @media (max-width: 600px) {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
       }
 
-      @media (max-width: 470px) {
-        width: 23px;
-        height: 23px;
+      @media (max-width: 400px) {
+        width: 34px;
+        height: 34px;
       }
 
       &:before {
