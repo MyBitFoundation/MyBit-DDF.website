@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const StyledPageContentWrapper = styled.div`
   max-width: 1200px;

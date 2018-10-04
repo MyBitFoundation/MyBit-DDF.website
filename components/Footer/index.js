@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import StyledFooter from './StyledFooter';
 import StyledFooterWrapper from './StyledFooterWrapper';
 import StyledColumnSection from './StyledColumnSection';
-import Img from '../Img';
 import StyledIcon from './StyledIcon';
 import StyledRow from './StyledRow';
 import StyledColumn from './StyledColumn';

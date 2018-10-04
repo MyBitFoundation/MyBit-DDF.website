@@ -1,7 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import dayjs from 'dayjs';
-import ethereumRegex from 'ethereum-regex';
 
 import Theme from '../components/Theme';
 import Layout from '../index.js'

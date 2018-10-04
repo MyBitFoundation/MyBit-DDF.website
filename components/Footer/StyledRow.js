@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Img from '../Img';
 
 const StyledRow = styled.div`
   margin-top: 30px;

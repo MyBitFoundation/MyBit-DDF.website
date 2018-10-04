@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import classNames from 'classnames'
 import StyledMobileMenu from './StyledMobileMenu';
 import StyledIconList from './StyledIconList';
