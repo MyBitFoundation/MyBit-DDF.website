@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactPlaceholder from 'react-placeholder';
-import {TextRow} from 'react-placeholder/lib/placeholders';
 import StyledStatCard from './StyledStatCard';
 import StyledValue from './StyledValue';
 import StyledTitle from './StyledTitle';

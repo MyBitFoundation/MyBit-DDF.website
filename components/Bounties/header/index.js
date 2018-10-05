@@ -5,7 +5,6 @@ import StyledCategories from './StyledCategories';
 import StyledFilters from './StyledFilters';
 import StyledListHeader from './StyledListHeader';
 import StyledItemsCounter from './StyledItemsCounter';
-import StyledLabelForSwitch from './StyledLabelForSwitch';
 import StyledListHeaderLeft from './StyledListHeaderLeft';
 import Menu from '../../Menu';
 import SwitchWithLabel from './SwitchWithLabel';
