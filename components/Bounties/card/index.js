@@ -62,9 +62,14 @@ const Card = ({title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, u
             <Icon type="check" />
           </StyledCheckmark>
         )}
-        <StyledCardTitle merged={merged}>
-          {title}
-        </StyledCardTitle>
+        <a href={url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <StyledCardTitle merged={merged}>
+            {title}
+          </StyledCardTitle>
+        </a>
         {generateLabels(labels)}
       </div>
       <div>
