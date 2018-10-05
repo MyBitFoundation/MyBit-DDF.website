@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import Header from './header';
 import Card from './card';
 import StyledCards from './StyledCards';
-import { BountiesDataTmp } from '../../constants';
 import StyledSpinner from './loading/StyledSpinner';
 import Spin from '../Spin';
 import StyledMessage from './StyledMessage';
