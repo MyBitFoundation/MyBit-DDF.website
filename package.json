@@ -9,7 +9,7 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
-    "@babel/core": "7.1.0",
+    "@babel/core": "7.1.2",
     "@zeit/next-less": "0.3.0",
     "antd": "3.10.0",
     "axios": "0.18.0",
@@ -32,7 +32,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.1.0",
+    "@babel/core": "7.1.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
     "babel-plugin-inline-react-svg": "0.5.4",
