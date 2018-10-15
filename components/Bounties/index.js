@@ -82,7 +82,7 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
             styling={styling.spin}
           />
         </StyledSpinner>
-        <p>Loading Bounties</p>
+        <p>Loading Tasks</p>
       </StyledMessage>
     )
   }
@@ -90,7 +90,7 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
     toReturn = (
       <div>
         {header}
-        <StyledMessage>No bounties found</StyledMessage>
+        <StyledMessage>No tasks found</StyledMessage>
       </div>
     )
   }

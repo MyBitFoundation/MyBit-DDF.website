@@ -28,8 +28,8 @@ const getValueLabel = (value, mybitInUsd, tokenSymbol, showAmountInCrypto, merge
         <StyledValue merged={merged}>
         {
           showAmountInCrypto ?
-            `${Number(value.toFixed(2)).toLocaleString()} ${tokenSymbol}` :
-            `$${Number(mybitInUsd).toLocaleString()}`
+            `${Number(value.toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${tokenSymbol}` :
+            `$${Number(mybitInUsd).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
         }
       </StyledValue>
     </div>

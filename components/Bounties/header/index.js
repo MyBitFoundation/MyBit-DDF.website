@@ -30,7 +30,7 @@ const Header = ({styling, categories, selectedCategory, setCategory, issues, han
   return (
     <div>
       <StyledTitle>
-        Bounties
+        Tasks
       </StyledTitle>
       <StyledSubHeader>
       Choose your expertise
