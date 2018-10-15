@@ -100,7 +100,8 @@ export default class Home extends React.Component{
         value: `$${Number(totalValue).toLocaleString('en-US', { 
           minimumFractionDigits: 2, 
           maximumFractionDigits: 2,
-          style: 'currency'
+          style: 'currency',
+          currency: 'USD'
         })}`,
         loadingSize: "130"
       }, {
@@ -108,7 +109,8 @@ export default class Home extends React.Component{
         value: `$${Number(totalPayout).toLocaleString('en-US', { 
           minimumFractionDigits: 2, 
           maximumFractionDigits: 2,
-          style: 'currency'
+          style: 'currency',
+          currency: 'USD'
         })}`,
         loadingSize: "130"
       }, {
