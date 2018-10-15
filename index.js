@@ -111,7 +111,7 @@ export default ({ children }) =>
       />
       <meta
         property="og:description"
-        content="The world’s most advanced IoT investment ecosystem. Powered by Ethereum."
+        content="The MyBit Decentralised Development Fund (DDF) is an investment fund that is tied to the development of MyBit Foundation products."
       />
       <meta property="og:site_name" content="MyBit" />
     </Head>
