@@ -1,9 +1,8 @@
 import React from 'react';
-import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import DdfInfoContext from './DdfInfoContext';
-import { Repos, IssuesCategories as Categories } from '../../constants';
+import { Repos } from '../../constants';
 import ethereumRegex from 'ethereum-regex';
 
 export default class DdfInfo extends React.Component {

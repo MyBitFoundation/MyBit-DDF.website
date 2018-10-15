@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import Header from './header';
 import Card from './card';
 import StyledCards from './StyledCards';
-import { BountiesDataTmp } from '../../constants';
 import StyledSpinner from './loading/StyledSpinner';
 import Spin from '../Spin';
 import StyledMessage from './StyledMessage';
@@ -83,7 +82,7 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
             styling={styling.spin}
           />
         </StyledSpinner>
-        <p>Loading Bounties</p>
+        <p>Loading Tasks</p>
       </StyledMessage>
     )
   }
@@ -91,7 +90,7 @@ const Bounties = ({styling, issues, categories, selectedCategory, setCategory, h
     toReturn = (
       <div>
         {header}
-        <StyledMessage>No bounties found</StyledMessage>
+        <StyledMessage>No tasks found</StyledMessage>
       </div>
     )
   }
