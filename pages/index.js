@@ -97,8 +97,8 @@ export default class Home extends React.Component{
   setStats = (completedTasks, openTasks, totalPayout, totalValue, contributors) => {
     const stats = [{
         name:"Total Value of Fund",
-        value: `$${Number(totalValue).toLocaleString('en-US', { 
-          minimumFractionDigits: 2, 
+        value: `${totalValue.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
           maximumFractionDigits: 2,
           style: 'currency',
           currency: 'USD'
@@ -106,8 +106,8 @@ export default class Home extends React.Component{
         loadingSize: "130"
       }, {
         name: "Total Payout",
-        value: `$${Number(totalPayout).toLocaleString('en-US', { 
-          minimumFractionDigits: 2, 
+        value: `${totalPayout.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
           maximumFractionDigits: 2,
           style: 'currency',
           currency: 'USD'
