@@ -17,6 +17,14 @@ const StyledWelcome = styled.div`
   max-width: 850px;
   width: 100%;
 
+  p{
+     font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  }
+
   @media (max-width: 900px) {
     width: 100%;
     max-width: 100%;
@@ -41,7 +49,6 @@ const StyledWelcome = styled.div`
 
   & .ant-btn{
     font-size: 20px;
-    margin-top: 5px;
     font-weight: 500;
     padding-left: 30px;
     padding-right: 30px;
