@@ -52,6 +52,8 @@ const StyledWelcome = styled.div`
     font-weight: 500;
     padding-left: 30px;
     padding-right: 30px;
+    height: 48px;
+    margin-top: 7px;
   }
 
   & .checkmark::before{
