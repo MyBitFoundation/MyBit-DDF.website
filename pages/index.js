@@ -254,7 +254,7 @@ export default class Home extends React.Component{
 
     return(
       <Layout>
-        {true && (
+        {welcome && (
           <Welcome
             styling={Theme.buttons.primary.green}
             hadleWelcomeClicked={this.hadleWelcomeClicked}
