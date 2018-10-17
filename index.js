@@ -114,6 +114,7 @@ export default ({ children }) =>
         content="The MyBit Decentralised Development Fund (DDF) is an investment fund that is tied to the development of MyBit Foundation products."
       />
       <meta property="og:site_name" content="MyBit" />
+      <title>MyBit DDF</title>
     </Head>
     {children}
   </div>
