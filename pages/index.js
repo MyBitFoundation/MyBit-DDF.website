@@ -9,6 +9,7 @@ import StyledAppWrapper from './StyledAppWrapper';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
 import Footer from '../components/Footer';
 import StyledRefreshWarning from './StyledRefreshWarning';
+import Welcome from '../components/Welcome';
 
 import { BountiesPerPage, RefreshTimeInSeconds } from '../constants';
 import GithubApi from '../api/github';
@@ -42,19 +43,37 @@ export default class Home extends React.Component{
         pullingIssues: false,
         showAmountInCrypto: false,
     }
+    this.hadleWelcomeClicked = this.hadleWelcomeClicked.bind(this);
   }
 
+  isFirstVisit = () => {
+    try {
+      if (localStorage.getItem('mybitUser') === null) {
+        localStorage.setItem('mybitUser', 'true');
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
 
   componentDidMount = () => {
     this.checkStorageForCurrencyType();
     this.checkStorageForCategory();
     this.setState({pullingIssues: true})
+    if (this.isFirstVisit()) {
+      this.setState({
+        welcome: true,
+      });
+    }
     this.getIssues();
     setInterval(() => {
       if(this.state.pullingIssues) return;
         this.setState({pullingIssues: true})
       this.getIssues()
     }, RefreshTimeInSeconds * 1000);
+
   }
 
   checkStorageForCurrencyType = () => {
@@ -224,9 +243,23 @@ export default class Home extends React.Component{
     this.setState({sideBar});
   }
 
+  hadleWelcomeClicked = () => {
+    this.setState({
+      welcome: false,
+    });
+  }
+
   render(){
+    const { welcome } = this.state;
+
     return(
       <Layout>
+        {welcome && (
+          <Welcome
+            styling={Theme.buttons.primary.green}
+            hadleWelcomeClicked={this.hadleWelcomeClicked}
+          />
+        )}
         <StyledAppWrapper isMenuOpen={this.state.sideBar}>
           <Header
             styling={Theme}
