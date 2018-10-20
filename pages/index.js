@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Theme from '../components/Theme';
-import Layout from '../index.js'
+import Head from '../index.js'
 import Header from '../components/Header'
 import Stats from '../components/Stats';
 import Bounties from '../components/Bounties';
@@ -10,7 +10,7 @@ import StyledPageContentWrapper from './StyledPageContentWrapper';
 import Footer from '../components/Footer';
 import StyledRefreshWarning from './StyledRefreshWarning';
 import Welcome from '../components/Welcome';
-
+import Layout from '../components/Layout';
 import { BountiesPerPage, RefreshTimeInSeconds } from '../constants';
 import GithubApi from '../api/github';
 
@@ -253,45 +253,47 @@ export default class Home extends React.Component{
     const { welcome } = this.state;
 
     return(
-      <Layout>
-        {welcome && (
-          <Welcome
-            styling={Theme.buttons.primary.green}
-            hadleWelcomeClicked={this.hadleWelcomeClicked}
-          />
-        )}
-        <StyledAppWrapper isMenuOpen={this.state.sideBar}>
-          <Header
-            styling={Theme}
-            handleClickMobileMenu={this.handleClickMobileMenu}
-            sidebarOpen={this.state.sideBar}
-          />
-          <Stats stats={this.state.stats}/>
-          <StyledPageContentWrapper>
-            <Bounties
-              styling={Theme}
-              issues={this.state.issues}
-              categories={this.state.categories}
-              selectedCategory={this.state.selectedCategory}
-              setCategory={this.setCategory}
-              handleClickedFilter={this.handleClickedFilter}
-              showCompletedTasks={this.state.showCompletedTasks}
-              handleShowCompletedTasks={this.handleShowCompletedTasks}
-              handleShowAmountInCrypto={this.handleShowAmountInCrypto}
-              showAmountInCrypto={this.state.showAmountInCrypto}
-              bountiesPerPage={BountiesPerPage}
-              currentPage={this.state.currentPage}
-              setCurrentPage={this.setCurrentPage}
-              orderBy={this.state.orderBy}
-              handleOrderByClicked={this.handleOrderByClicked}
+      <Head>
+        <Layout>
+          {welcome && (
+            <Welcome
+              styling={Theme.buttons.primary.green}
+              hadleWelcomeClicked={this.hadleWelcomeClicked}
             />
-            <StyledRefreshWarning>The information on this page refreshes every 30 seconds</StyledRefreshWarning>
-          </StyledPageContentWrapper>
-          <Footer
-            styling={Theme.footer}
-          />
-        </StyledAppWrapper>
-      </Layout>
+          )}
+          <StyledAppWrapper isMenuOpen={this.state.sideBar}>
+            <Header
+              styling={Theme}
+              handleClickMobileMenu={this.handleClickMobileMenu}
+              sidebarOpen={this.state.sideBar}
+            />
+            <Stats stats={this.state.stats}/>
+            <StyledPageContentWrapper>
+              <Bounties
+                styling={Theme}
+                issues={this.state.issues}
+                categories={this.state.categories}
+                selectedCategory={this.state.selectedCategory}
+                setCategory={this.setCategory}
+                handleClickedFilter={this.handleClickedFilter}
+                showCompletedTasks={this.state.showCompletedTasks}
+                handleShowCompletedTasks={this.handleShowCompletedTasks}
+                handleShowAmountInCrypto={this.handleShowAmountInCrypto}
+                showAmountInCrypto={this.state.showAmountInCrypto}
+                bountiesPerPage={BountiesPerPage}
+                currentPage={this.state.currentPage}
+                setCurrentPage={this.setCurrentPage}
+                orderBy={this.state.orderBy}
+                handleOrderByClicked={this.handleOrderByClicked}
+              />
+              <StyledRefreshWarning>The information on this page refreshes every 30 seconds</StyledRefreshWarning>
+            </StyledPageContentWrapper>
+            <Footer
+              styling={Theme.footer}
+            />
+          </StyledAppWrapper>
+        </Layout>
+      </Head>
     )
   }
 }

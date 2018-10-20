@@ -14,7 +14,7 @@ const Welcome = ({ styling, hadleWelcomeClicked }) => (
     <p>The DDF is a layer built on-top of OpenBounty by Status. To continue you will need an account with OpenBounty.
       Instructions can be found{' '}
       <a
-        href="https://medium.com/mybit-dapp/a-guide-to-the-mybit-decentralised-development-fund-45cb9c1bcda4"
+        href="https://wiki.status.im/Status_Open_Bounty#For_Developers"
         target="_blank"
         rel="noopener noreferrer">here
       </a>
