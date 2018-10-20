@@ -7,12 +7,12 @@ export default class Layout extends React.Component {
     if (!window.GA_INITIALIZED) {
       initGA()
       initTwitterConvTrkr()
+      initPixelConvTrkr()
       window.GA_INITIALIZED = true
     }
     logPageView()
     logTwitterPageView()
-    initPixelConvTrkr();
-    logPixelPageView();
+    logPixelPageView()
   }
   render () {
     return (
