@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { initGA, logPageView, initTwitterConvTrkr, logTwitterPageView, initPixelConvTrkr, logPixelPageView } from '../utils/analytics'
+import { initGA, logPageView, initTwitterConvTrkr, logTwitterPageView, initPixelConvTrkr, logPixelPageView } from '../../utils/analytics'
 
 export default class Layout extends React.Component {
   componentDidMount () {
