@@ -13,7 +13,7 @@
     "@zeit/next-less": "0.3.0",
     "antd": "3.10.1",
     "axios": "0.18.0",
-    "babel-plugin-import": "1.9.1",
+    "babel-plugin-import": "1.10.0",
     "babel-plugin-inline-react-svg": "0.5.4",
     "babel-plugin-transform-assets-import-to-string": "1.2.0",
     "classnames": "2.2.6",
