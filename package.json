@@ -30,7 +30,7 @@
     "react-placeholder": "3.0.1",
     "react-router-dom": "4.3.1",
     "react-twitter-conversion-tracker": "^1.0.0",
-    "styled-components": "3.4.10"
+    "styled-components": "4.0.2"
   },
   "license": "MIT",
   "devDependencies": {
