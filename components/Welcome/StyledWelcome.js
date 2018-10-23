@@ -18,11 +18,11 @@ const StyledWelcome = styled.div`
   width: 100%;
 
   p{
-     font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
   }
 
   @media (max-width: 900px) {
@@ -36,6 +36,11 @@ const StyledWelcome = styled.div`
 
   @media (max-width: 900px) {
     padding: 50px 10px 20px 10px;
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 0px;
+    position: absolute;
   }
 
   & .title{
