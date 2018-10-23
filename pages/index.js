@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Theme from '../components/Theme';
-import Layout from '../index.js'
+import Head from '../index.js'
 import Header from '../components/Header'
 import Stats from '../components/Stats';
 import Bounties from '../components/Bounties';
@@ -9,7 +9,8 @@ import StyledAppWrapper from './StyledAppWrapper';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
 import Footer from '../components/Footer';
 import StyledRefreshWarning from './StyledRefreshWarning';
-
+import Welcome from '../components/Welcome';
+import Layout from '../components/Layout';
 import { BountiesPerPage, RefreshTimeInSeconds } from '../constants';
 import GithubApi from '../api/github';
 
@@ -42,19 +43,37 @@ export default class Home extends React.Component{
         pullingIssues: false,
         showAmountInCrypto: false,
     }
+    this.hadleWelcomeClicked = this.hadleWelcomeClicked.bind(this);
   }
 
+  isFirstVisit = () => {
+    try {
+      if (localStorage.getItem('mybitUser') === null) {
+        localStorage.setItem('mybitUser', 'true');
+        return true;
+      }
+      return false;
+    } catch (e) {
+      return false;
+    }
+  }
 
   componentDidMount = () => {
     this.checkStorageForCurrencyType();
     this.checkStorageForCategory();
     this.setState({pullingIssues: true})
+    if (this.isFirstVisit()) {
+      this.setState({
+        welcome: true,
+      });
+    }
     this.getIssues();
     setInterval(() => {
       if(this.state.pullingIssues) return;
         this.setState({pullingIssues: true})
       this.getIssues()
     }, RefreshTimeInSeconds * 1000);
+
   }
 
   checkStorageForCurrencyType = () => {
@@ -97,11 +116,21 @@ export default class Home extends React.Component{
   setStats = (completedTasks, openTasks, totalPayout, totalValue, contributors) => {
     const stats = [{
         name:"Total Value of Fund",
-        value: `$${totalValue}`,
+        value: `${totalValue.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+          style: 'currency',
+          currency: 'USD'
+        })}`,
         loadingSize: "130"
       }, {
         name: "Total Payout",
-        value: `$${totalPayout}`,
+        value: `${totalPayout.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+          style: 'currency',
+          currency: 'USD'
+        })}`,
         loadingSize: "130"
       }, {
         name: "Open Tasks",
@@ -214,41 +243,57 @@ export default class Home extends React.Component{
     this.setState({sideBar});
   }
 
+  hadleWelcomeClicked = () => {
+    this.setState({
+      welcome: false,
+    });
+  }
+
   render(){
+    const { welcome } = this.state;
+
     return(
-      <Layout>
-        <StyledAppWrapper isMenuOpen={this.state.sideBar}>
-          <Header
-            styling={Theme}
-            handleClickMobileMenu={this.handleClickMobileMenu}
-            sidebarOpen={this.state.sideBar}
-          />
-          <Stats stats={this.state.stats}/>
-          <StyledPageContentWrapper>
-            <Bounties
-              styling={Theme}
-              issues={this.state.issues}
-              categories={this.state.categories}
-              selectedCategory={this.state.selectedCategory}
-              setCategory={this.setCategory}
-              handleClickedFilter={this.handleClickedFilter}
-              showCompletedTasks={this.state.showCompletedTasks}
-              handleShowCompletedTasks={this.handleShowCompletedTasks}
-              handleShowAmountInCrypto={this.handleShowAmountInCrypto}
-              showAmountInCrypto={this.state.showAmountInCrypto}
-              bountiesPerPage={BountiesPerPage}
-              currentPage={this.state.currentPage}
-              setCurrentPage={this.setCurrentPage}
-              orderBy={this.state.orderBy}
-              handleOrderByClicked={this.handleOrderByClicked}
+      <Head>
+        <Layout>
+          {welcome && (
+            <Welcome
+              styling={Theme.buttons.primary.green}
+              hadleWelcomeClicked={this.hadleWelcomeClicked}
             />
-            <StyledRefreshWarning>The information on this page refreshes every 30 seconds</StyledRefreshWarning>
-          </StyledPageContentWrapper>
-          <Footer
-            styling={Theme.footer}
-          />
-        </StyledAppWrapper>
-      </Layout>
+          )}
+          <StyledAppWrapper isMenuOpen={this.state.sideBar}>
+            <Header
+              styling={Theme}
+              handleClickMobileMenu={this.handleClickMobileMenu}
+              sidebarOpen={this.state.sideBar}
+            />
+            <Stats stats={this.state.stats}/>
+            <StyledPageContentWrapper>
+              <Bounties
+                styling={Theme}
+                issues={this.state.issues}
+                categories={this.state.categories}
+                selectedCategory={this.state.selectedCategory}
+                setCategory={this.setCategory}
+                handleClickedFilter={this.handleClickedFilter}
+                showCompletedTasks={this.state.showCompletedTasks}
+                handleShowCompletedTasks={this.handleShowCompletedTasks}
+                handleShowAmountInCrypto={this.handleShowAmountInCrypto}
+                showAmountInCrypto={this.state.showAmountInCrypto}
+                bountiesPerPage={BountiesPerPage}
+                currentPage={this.state.currentPage}
+                setCurrentPage={this.setCurrentPage}
+                orderBy={this.state.orderBy}
+                handleOrderByClicked={this.handleOrderByClicked}
+              />
+              <StyledRefreshWarning>The information on this page refreshes every 30 seconds</StyledRefreshWarning>
+            </StyledPageContentWrapper>
+            <Footer
+              styling={Theme.footer}
+            />
+          </StyledAppWrapper>
+        </Layout>
+      </Head>
     )
   }
 }
