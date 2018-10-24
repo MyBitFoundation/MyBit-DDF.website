@@ -16,8 +16,8 @@ const navigationItems = [
     iconRight: "down",
     subNavigation: [
       {
-        name: "Tokensale",
-        linkTo: "/first-resource",
+        name: "Token Distribution",
+        linkTo: "https://medium.com/mybit-dapp/mybit-token-distribution-phase-2-b938ee231496",
         external: true,
       }, {
         name: "Whitepaper",
