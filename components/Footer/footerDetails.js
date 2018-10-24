@@ -65,8 +65,8 @@ const footerColumns = [
     }, {
       title: "Resources",
       content: [{
-        name: "Tokensale",
-        linkTo: "/",
+        name: "Token Distribution",
+        linkTo: "https://medium.com/mybit-dapp/mybit-token-distribution-phase-2-b938ee231496",
         external: true
       }, {
         name:"Whitepaper",
@@ -85,7 +85,7 @@ const footerColumns = [
       title: "About",
       content: [{
         name: "Company",
-        linkTo: "https://mybit.io/about",
+        linkTo: "https://mybit.io/about-us",
         target: "_top",
       }, {
         name:"Token",
