@@ -11,7 +11,7 @@
   "dependencies": {
     "@babel/core": "7.1.2",
     "@zeit/next-less": "0.3.0",
-    "antd": "3.10.1",
+    "antd": "3.10.2",
     "axios": "0.18.0",
     "babel-plugin-import": "1.10.0",
     "babel-plugin-inline-react-svg": "1.0.1",
@@ -23,8 +23,8 @@
     "less": "3.8.1",
     "next": "6.1.2",
     "prop-types": "15.6.2",
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
+    "react": "16.6.0",
+    "react-dom": "16.6.0",
     "react-facebook-pixel": "0.1.1",
     "react-ga": "2.5.3",
     "react-placeholder": "3.0.1",
@@ -44,6 +44,6 @@
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "jest": "23.6.0",
-    "sinon": "7.0.0"
+    "sinon": "7.1.0"
   }
 }

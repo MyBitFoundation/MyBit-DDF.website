@@ -19,7 +19,7 @@ export const logPixelPageView = () => {
 }
 
 export const initGA = () => {
-  ReactGA.initialize('UA-125576919-1')
+  ReactGA.initialize('UA-125576919-2')
 }
 
 export const logPageView = () => {
