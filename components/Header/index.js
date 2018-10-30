@@ -7,10 +7,12 @@ const Header = ({styling, handleClickMobileMenu, sidebarOpen}) => (
   <StyledHeader
     backgroundColor={styling.colors.backgroundGradientVertical}
   >
-    <StyledLogo
-      src="/static/logo.svg"
-      alt="MyBit's logo"
-    />
+    <a href="https://mybit.io/">
+      <StyledLogo
+        src="/static/logo.svg"
+        alt="MyBit's logo"
+      />
+    </a>
     <NavigationBar
       styling={styling.menu}
       handleClickMobileMenu={handleClickMobileMenu}
