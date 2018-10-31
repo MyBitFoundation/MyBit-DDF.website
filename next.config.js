@@ -7,6 +7,9 @@ if (typeof require !== 'undefined') {
 }
 
 module.exports = withLess({
+  publicRuntimeConfig: {
+    offlineMode: !!process.env.OFFLINE,
+  },
   lessLoaderOptions: {
     javascriptEnabled: true,
   },

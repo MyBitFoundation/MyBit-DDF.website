@@ -6,6 +6,7 @@
     "build": "next build",
     "export": "next export -o build",
     "start": "next start",
+    "start-offline": "OFFLINE=1 next",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
