@@ -74,12 +74,12 @@ const Card = ({title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, u
         </a>
         <StyledCopyToClipboard onClick={() => { navigator.clipboard.writeText(url);
                                                 notification.open({message: 'Link Copied',
-                                                                   duration: 0.5,
+                                                                   duration: 1.5,
                                                                    icon: <StyledCheckmark>
                                                                             <Icon type="check" />
                                                                          </StyledCheckmark>},
                                                                   )}}>
-            <Tooltip title="Copy to clipboard"><Icon type="copy" /> </Tooltip>
+            <Tooltip title="Copy task link to clipboard"><Icon type="copy" /> </Tooltip>
         </StyledCopyToClipboard>
         {generateLabels(labels)}
       </div>
