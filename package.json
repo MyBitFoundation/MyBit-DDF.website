@@ -2,11 +2,11 @@
   "name": "MyBit_DDF",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "export": "next export -o build",
-    "start": "next start",
-    "start-offline": "OFFLINE=1 next",
+    "start": "NODE_ENV=production node server.js",
+    "start-offline": "OFFLINE=1 node server.js",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
