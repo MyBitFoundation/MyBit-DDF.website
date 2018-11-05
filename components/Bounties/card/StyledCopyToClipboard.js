@@ -1,10 +1,9 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const StyledCopyToClipboard = styled.span`
-  .anticon{
+  .anticon {
     color: #7d7d7d;
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
   }
 `;
 
