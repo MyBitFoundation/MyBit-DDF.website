@@ -11,9 +11,9 @@
   "dependencies": {
     "@babel/core": "7.1.2",
     "@zeit/next-less": "0.3.0",
-    "antd": "3.10.2",
+    "antd": "3.10.4",
     "axios": "0.18.0",
-    "babel-plugin-import": "1.10.0",
+    "babel-plugin-import": "1.11.0",
     "babel-plugin-inline-react-svg": "1.0.1",
     "babel-plugin-transform-assets-import-to-string": "1.2.0",
     "classnames": "2.2.6",
@@ -44,6 +44,6 @@
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "jest": "23.6.0",
-    "sinon": "7.1.0"
+    "sinon": "7.1.1"
   }
 }
