@@ -79,7 +79,7 @@ export default ({ children }) =>
       <link rel="manifest" href="/static/favicons/manifest.json" />
       <meta
         name="description"
-        content="The world’s most advanced IoT investment ecosystem. Powered by Ethereum."
+        content="Contribute to open source projects and get rewarded."
       />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta
@@ -94,7 +94,7 @@ export default ({ children }) =>
       <meta name="twitter:title" content="MyBit" />
       <meta
         name="twitter:description"
-        content="The world’s most advanced IoT investment ecosystem. Powered by Ethereum."
+        content="Contribute to open source projects and get rewarded."
       />
       <meta name="twitter:creator" content="@MyBit_DApp" />
       <meta

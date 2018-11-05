@@ -215,7 +215,12 @@ export default class Home extends React.Component{
       data.issues = data.issues.map((issue, index) => {
         const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url, mybitInUsd} = issue;
         const category = this.getCategory(repoName);
-
+        let subCategory = repoName.substring(6, repoName.indexOf("."));
+        if (subCategory == ".") {
+          subCategory = "Other";
+        }
+        while (labels.length) { labels.pop(); }
+        labels.push(subCategory);
         return {
           createdAt,
           merged,
