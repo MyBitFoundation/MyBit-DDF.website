@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Divider } from 'antd';
-import { Tooltip } from 'antd';
+import { notification, Tooltip } from 'antd';
 import 'antd/lib/divider/style/';
 import StyledCard from './StyledCard';
 import StyledCardTime from './StyledCardTime';
@@ -72,7 +72,13 @@ const Card = ({title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, u
             {title}
           </StyledCardTitle>
         </a>
-        <StyledCopyToClipboard onClick={() => {navigator.clipboard.writeText(url)}}>
+        <StyledCopyToClipboard onClick={() => { navigator.clipboard.writeText(url);
+                                                notification.open({message: 'Link Copied',
+                                                                   duration: 0.5,
+                                                                   icon: <StyledCheckmark>
+                                                                            <Icon type="check" />
+                                                                         </StyledCheckmark>},
+                                                                  )}}>
             <Tooltip title="Copy to clipboard"><Icon type="copy" /> </Tooltip>
         </StyledCopyToClipboard>
         {generateLabels(labels)}
