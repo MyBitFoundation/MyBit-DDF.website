@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Divider } from 'antd';
+import { notification, Tooltip } from 'antd';
 import 'antd/lib/divider/style/';
 import StyledCard from './StyledCard';
 import StyledCardTime from './StyledCardTime';
@@ -18,6 +19,7 @@ import Icon from '../../Icon';
 import StyledCheckmark from './StyledCheckmark';
 import StyledNotYetFunded from './StyledNotYetFunded';
 import {OrgName} from '../../../constants';
+import StyledCopyToClipboard from './StyledCopyToClipboard';
 
 const getValueLabel = (value, mybitInUsd, tokenSymbol, showAmountInCrypto, merged) =>
   value > 0 ?
@@ -70,6 +72,21 @@ const Card = ({title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, u
             {title}
           </StyledCardTitle>
         </a>
+        <StyledCopyToClipboard
+          onClick={() => {
+            navigator.clipboard.writeText(url);
+            notification.open({
+              message: "Link Copied",
+              duration: 1.5,
+              icon: (
+                <StyledCheckmark>
+                  <Icon type="check" />
+                </StyledCheckmark>
+              )
+            });
+          }}>
+        <Tooltip title="Copy task link to clipboard"><Icon type="copy" /> </Tooltip>
+        </StyledCopyToClipboard>
         {generateLabels(labels)}
       </div>
       <div>
