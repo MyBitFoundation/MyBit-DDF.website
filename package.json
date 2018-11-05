@@ -5,6 +5,7 @@
     "dev": "next",
     "build": "next build",
     "export": "next export -o build",
+    "lint": "prettier-eslint --write './**/*.js' --ignore './node_modules/**' --ignore './build/**'",
     "start": "next start",
     "test": "NODE_ENV=test jest"
   },
@@ -44,6 +45,7 @@
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "jest": "23.6.0",
+    "prettier-eslint-cli": "^4.7.1",
     "sinon": "7.1.0"
   }
 }
