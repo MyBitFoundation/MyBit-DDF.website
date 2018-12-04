@@ -1,5 +1,5 @@
 import axios from 'axios';
-const END_POINT = "https://github.mybit.io";
+const END_POINT = "https://githubmybitio-tuhnxxkvld.now.sh";
 
 import getConfig from 'next/config';
 
