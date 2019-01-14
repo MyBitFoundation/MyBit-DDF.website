@@ -11,6 +11,7 @@ import StyledRepoName from './StyledRepoName';
 import StyledValue from './StyledValue';
 import StyledValueLabel from './StyledValueLabel';
 import StyledDescription from './StyledDescription';
+import Comments from '../../Comments';
 import StyledButtonChallenge from './StyledButtonChallenge';
 import StyledHeader from './StyledHeader';
 import StyledFooter from './StyledFooter';
@@ -44,7 +45,8 @@ export default class Card extends React.Component {
     super(props);
     this.state = {
       showDescription: false,
-    }
+      showComments: false,
+    };
     this.getValueLabel = this.getValueLabel.bind(this);
   }
 
@@ -64,6 +66,9 @@ export default class Card extends React.Component {
       {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide description" unCheckedChildren="Show description" onChange={(checked) => {
         this.setState({showDescription: checked});
       }}/>}
+      {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide comments" unCheckedChildren="Show comments" onChange={(checked) => {
+        this.setState({showComments: checked});
+      }}/>}
     </div>
   :
     <StyledNotYetFunded>
@@ -71,8 +76,8 @@ export default class Card extends React.Component {
     </StyledNotYetFunded>
 
   render() {
-    const {title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, url, styling, merged, tokenSymbol, showAmountInCrypto, body} = this.props;
-    const { showDescription } = this.state;
+    const {title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, url, styling, merged, tokenSymbol, showAmountInCrypto, body, comments} = this.props;
+    const { showDescription, showComments } = this.state;
 
     return(
     <StyledCard>
@@ -138,6 +143,7 @@ export default class Card extends React.Component {
       </StyledFooter>
 
       {showDescription && <StyledDescription><MarkdownGithub source={body} /> </StyledDescription>}
+      {showComments && <Comments comments={comments}/>}
     </StyledCard>
   )}
 }
