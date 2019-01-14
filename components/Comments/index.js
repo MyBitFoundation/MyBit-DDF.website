@@ -36,13 +36,12 @@ export default class Comments extends React.Component{
     let totalCommentsFiltered = 0;
     const {currentPage} = this.state;
     const {commentsPerPage, comments} = this.props;
-    console.log("COMMENTS(-1) => ", comments);
+    
     totalCommentsFiltered = comments.length;
     let startIndex = currentPage * commentsPerPage;
     let endIndex = (currentPage + 1) * commentsPerPage;
     commentsFiltered = comments.slice(startIndex, endIndex);
 
-    console.log("COMMENTS(0) => ", commentsFiltered);
     return(
       <div>
         <StyledComments>
