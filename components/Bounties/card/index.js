@@ -23,6 +23,7 @@ import StyledNotYetFunded from './StyledNotYetFunded';
 import {OrgName} from '../../../constants';
 import StyledCopyToClipboard from './StyledCopyToClipboard';
 import MarkdownGithub from 'react-markdown-github';
+import { CommentsPerPage } from "../../../constants";
 
 const generateLabels = (labels) =>
   <StyledLabels>
@@ -143,7 +144,11 @@ export default class Card extends React.Component {
       </StyledFooter>
 
       {showDescription && <StyledDescription><MarkdownGithub source={body} /> </StyledDescription>}
-      {showComments && <Comments comments={comments}/>}
+      {showComments &&
+        <Comments
+          commentsPerPage={CommentsPerPage} comments={comments}
+        />
+      }
     </StyledCard>
   )}
 }
