@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider } from 'antd';
 import { notification, Switch, Tooltip } from 'antd';
@@ -12,6 +13,7 @@ import StyledValue from './StyledValue';
 import StyledValueLabel from './StyledValueLabel';
 import StyledDescription from './StyledDescription';
 import Comments from '../../Comments';
+import AddComment from '../../Comments/AddComment';
 import StyledButtonChallenge from './StyledButtonChallenge';
 import StyledHeader from './StyledHeader';
 import StyledFooter from './StyledFooter';
@@ -32,12 +34,12 @@ const generateLabels = (labels) =>
         <Divider type="vertical"/>{' '}{label}
       </StyledLabel>
     ))}
-  </StyledLabels>
+  </StyledLabels>;
 
 const getTimeLabel = (time) =>
   <StyledCardTime>
     {GetTimeAgo(time)}
-  </StyledCardTime>
+  </StyledCardTime>;
 
 
 export default class Card extends React.Component {
@@ -47,6 +49,7 @@ export default class Card extends React.Component {
     this.state = {
       showDescription: false,
       showComments: false,
+      showAddComment: false
     };
     this.getValueLabel = this.getValueLabel.bind(this);
   }
@@ -64,11 +67,14 @@ export default class Card extends React.Component {
             `$${Number(mybitInUsd).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
         }
       </StyledValue>
-      {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide description" unCheckedChildren="Show description" onChange={(checked) => {
+      {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide Description" unCheckedChildren="Show Description" onChange={(checked) => {
         this.setState({showDescription: checked});
       }}/>}
-      {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide comments" unCheckedChildren="Show comments" onChange={(checked) => {
+      {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide Comments" unCheckedChildren="Show Comments" onChange={(checked) => {
         this.setState({showComments: checked});
+      }}/>}
+      {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide Comment Box" unCheckedChildren="Show Comment Box" onChange={(checked) => {
+        this.setState({showAddComment: checked});
       }}/>}
     </div>
   :
@@ -78,7 +84,7 @@ export default class Card extends React.Component {
 
   render() {
     const {title, labels, repoName, repoUrl, value, mybitInUsd, createdAt, url, styling, merged, tokenSymbol, showAmountInCrypto, body, comments} = this.props;
-    const { showDescription, showComments } = this.state;
+    const { showDescription, showComments, showAddComment } = this.state;
 
     return(
     <StyledCard>
@@ -148,6 +154,9 @@ export default class Card extends React.Component {
         <Comments
           commentsPerPage={CommentsPerPage} comments={comments}
         />
+      }
+      {showAddComment &&
+        <AddComment />
       }
     </StyledCard>
   )}
