@@ -1,10 +1,11 @@
 import React from 'react';
-import { Form, Textarea } from "../Form";
+import { Form, Textarea, StyledFieldSet } from "../Form";
+import Button from "../Button"
 
-const AddComment = ({}) => (
+const AddComment = ({styling, issueUrl}) => (
   <Form
-    action="https://github.mybit.io/api/createComment"
-    method="post"
+    action=""
+    method=""
   >
     <Textarea
       hasLabel='false'
@@ -14,6 +15,15 @@ const AddComment = ({}) => (
       rows={5}
       placeholder='Add comment (This comment will be posted to the corresponding github issue page)'
     />
+    <StyledFieldSet>
+      <Button
+        styling={styling.primary.blue}
+        size="large"
+        href={issueUrl}
+      >
+        Submit Comment
+      </Button>
+    </StyledFieldSet>
   </Form>
 );
 

@@ -7,3 +7,4 @@ export { default as Label } from './Label';
 export { default as Radio } from './Radio';
 export { default as Select } from './Select';
 export { default as Textarea } from './Textarea';
+export { default as StyledFieldSet } from './StyledFieldset';

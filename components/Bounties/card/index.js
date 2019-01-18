@@ -156,7 +156,10 @@ export default class Card extends React.Component {
         />
       }
       {showAddComment &&
-        <AddComment />
+        <AddComment
+          styling={styling}
+          issueUrl={url}
+        />
       }
     </StyledCard>
   )}
