@@ -27,7 +27,7 @@
     "prop-types": "15.6.2",
     "react": "16.6.0",
     "react-dom": "16.6.0",
-    "react-facebook-pixel": "0.1.1",
+    "react-facebook-pixel": "0.1.2",
     "react-ga": "2.5.3",
     "react-markdown-github": "^3.0.1",
     "react-placeholder": "3.0.1",
