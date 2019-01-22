@@ -22,7 +22,7 @@
     "ethereum-regex": "1.1.4",
     "express": "4.16.4",
     "include-media": "1.4.9",
-    "less": "3.8.1",
+    "less": "3.9.0",
     "next": "6.1.2",
     "prop-types": "15.6.2",
     "react": "16.6.0",
