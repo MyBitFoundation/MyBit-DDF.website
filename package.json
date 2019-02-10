@@ -19,7 +19,7 @@
     "babel-plugin-transform-assets-import-to-string": "1.2.0",
     "classnames": "2.2.6",
     "dayjs": "1.7.7",
-    "ethereum-regex": "1.1.4",
+    "ethereum-regex": "1.1.5",
     "express": "4.16.4",
     "include-media": "1.4.9",
     "less": "3.8.1",
