@@ -9,9 +9,11 @@ import 'antd/lib/menu/style';
 export default class Menu extends React.Component{
 
   getMenuItem = (item) => {
+    const iconRight = item.iconRight && <Icon type={item.iconRight} isRight />;
+    const iconLeft = item.iconLeft && <Icon type={item.iconLeft} />;
     return (
       <MenuItem styling={this.props.styling} key={item.name}>
-        {item.linkTo ? <a href={item.linkTo} target={item.target || "_blank"} key={item.name}>{item.name}</a>
+        {item.linkTo ? <a href={item.linkTo} target={item.target || "_blank"} key={item.name}>{iconLeft}{item.name}{iconRight}</a>
         : item.name}
       </MenuItem>
     )

@@ -213,7 +213,7 @@ export default class Home extends React.Component{
       let data = await GithubApi.getOrgIssues()
 
       data.issues = data.issues.map((issue, index) => {
-        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url, mybitInUsd} = issue;
+        const {labels, repoName, contractAddress, tokenSymbol, value, title, createdAt, merged, url, mybitInUsd, body, comments} = issue;
         const category = this.getCategory(repoName);
         let subCategory = repoName.substring(6, repoName.indexOf("."));
         if (subCategory == ".") {
@@ -233,9 +233,11 @@ export default class Home extends React.Component{
           title,
           url,
           mybitInUsd,
+          body,
           repoUrl: `https://github.com/MyBitFoundation/${repoName}`,
+          comments
         }
-      })
+      });
 
       this.organizeIssues(data);
       this.setState({pullingIssues: false})

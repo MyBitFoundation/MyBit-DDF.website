@@ -1,5 +1,10 @@
 const navigationItems = [
   {
+    name: "Sign in",
+    iconLeft: "github",
+    linkTo: "https://oauth.mybit.io/?scope=user%20public_repo",
+    target: "_top",
+  }, {
     name: "Developer",
     linkTo: "https://mybit.io/developer",
     target: "_top",
