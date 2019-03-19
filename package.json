@@ -2,10 +2,11 @@
   "name": "MyBit_DDF",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "export": "next export -o build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
+    "start-offline": "OFFLINE=1 node server.js",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "classnames": "2.2.6",
     "dayjs": "1.7.7",
     "ethereum-regex": "1.1.4",
+    "express": "4.16.4",
     "include-media": "1.4.9",
     "less": "3.8.1",
     "next": "6.1.2",
@@ -27,6 +29,7 @@
     "react-dom": "16.6.0",
     "react-facebook-pixel": "0.1.1",
     "react-ga": "2.5.3",
+    "react-markdown-github": "^3.0.1",
     "react-placeholder": "3.0.1",
     "react-router-dom": "4.3.1",
     "react-twitter-conversion-tracker": "1.0.0",
