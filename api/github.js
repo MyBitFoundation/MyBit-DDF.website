@@ -1,5 +1,5 @@
 import axios from 'axios';
-const END_POINT = "https://github-staging.mybit.io";
+const END_POINT = "https://github.mybit.io";
 
 import getConfig from 'next/config';
 
