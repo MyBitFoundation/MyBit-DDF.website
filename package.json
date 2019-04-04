@@ -12,6 +12,7 @@
   "dependencies": {
     "@babel/core": "7.1.2",
     "@mybit/ui.footer": "^0.0.4",
+    "@mybit/ui.task-market.header": "^0.0.2",
     "@zeit/next-css": "^1.0.1",
     "antd": "3.10.4",
     "axios": "0.18.0",

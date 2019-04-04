@@ -2,13 +2,13 @@ import React from 'react';
 
 import Theme from '../components/Theme';
 import Head from '../index.js'
-import Header from '../components/Header'
 import Stats from '../components/Stats';
 import Bounties from '../components/Bounties';
 import StyledAppWrapper from '../components/StyledAppWrapper';
 import StyledPageContentWrapper from '../components/StyledPageContentWrapper';
 import StyledRefreshWarning from '../components/StyledRefreshWarning';
 import Footer from '@mybit/ui.footer';
+import Header from '@mybit/ui.task-market.header';
 import Welcome from '../components/Welcome';
 import Layout from '../components/Layout';
 import { BountiesPerPage, RefreshTimeInSeconds } from '../constants';

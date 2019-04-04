@@ -845,6 +845,13 @@
     "@reach/router" "^1.2.1"
     styled-components "^4.2.0"
 
+"@mybit/ui.task-market.header@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@mybit/ui.task-market.header/-/ui.task-market.header-0.0.2.tgz#4a8dc57a5a25773fedd765361ece9dc26bad22ac"
+  integrity sha512-moHwhM+Do30eFIMxSxfXWeNF8O1Qp/djr+Ak5Foawo4VZ5pbExnvV6BMzJ+pZCumNn38XDvcVltwnEWAy3bJWQ==
+  dependencies:
+    styled-components "^4.2.0"
+
 "@mybit/ui.theme-website@^0.0.3":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@mybit/ui.theme-website/-/ui.theme-website-0.0.3.tgz#d7901629a4375d6b768b9bfe08dc7eabacee216a"
