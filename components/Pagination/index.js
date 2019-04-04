@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {default as PaginationAnt} from 'antd/lib/pagination';
+import 'antd/lib/pagination/style/index.css';
 import StyledPagination from './StyledPagination';
 
 const Pagination = (props) => (

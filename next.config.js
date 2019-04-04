@@ -5,7 +5,11 @@ if (typeof require !== 'undefined') {
   require.extensions['.css'] = file => {}
 }
 
-module.exports = withCss()
+module.exports = withCss({
+    publicRuntimeConfig: {
+    offlineMode: !!process.env.OFFLINE,
+  },
+})
 
 // /* eslint-disable */
 // const withLess = require('@zeit/next-less')
