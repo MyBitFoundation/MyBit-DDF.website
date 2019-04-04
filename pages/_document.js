@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Decentralised Development Fund</title>
+          <title>Task Market</title>
           {this.props.styleTags}
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"

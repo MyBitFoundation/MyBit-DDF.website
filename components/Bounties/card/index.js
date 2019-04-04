@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Divider } from 'antd';
-import { notification, Switch, Tooltip } from 'antd';
-import 'antd/lib/divider/style/';
+import { notification, Tooltip } from 'antd';
 import StyledCard from './StyledCard';
 import StyledCardTime from './StyledCardTime';
 import StyledLabel from './StyledLabel';
@@ -14,6 +13,7 @@ import StyledDescription from './StyledDescription';
 import StyledButtonChallenge from './StyledButtonChallenge';
 import StyledHeader from './StyledHeader';
 import StyledFooter from './StyledFooter';
+import StyledSwitch from './StyledSwitch';
 import Button from '../../Button';
 import { GetTimeAgo } from '../../../utils';
 import Icon from '../../Icon';
@@ -61,7 +61,7 @@ export default class Card extends React.Component {
             `$${Number(mybitInUsd).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
         }
       </StyledValue>
-      {<Switch style={{marginLeft: "5px"}} checkedChildren="Hide description" unCheckedChildren="Show description" onChange={(checked) => {
+      {<StyledSwitch checkedChildren="Hide description" unCheckedChildren="Show description" onChange={(checked) => {
         this.setState({showDescription: checked});
       }}/>}
     </div>

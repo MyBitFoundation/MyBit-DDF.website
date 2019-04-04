@@ -175,7 +175,7 @@ const footerDetails = {
       }
     `,
   }, {
-    content: ["Copyright © MyBit Foundation 2018. All Rights Reserved."],
+    content: ["Copyright © MyBit Foundation 2019. All Rights Reserved."],
   }]
 }
 

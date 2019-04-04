@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon as IconAnt } from 'antd';
 import StyledIconRight from './StyledIconRight';

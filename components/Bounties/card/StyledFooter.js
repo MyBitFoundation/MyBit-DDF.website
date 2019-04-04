@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 const StyledFooter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: block;
 
-  @media (max-width: 359px) {
-    display: block;
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 `;
 

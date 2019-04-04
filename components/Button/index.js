@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import Tooltip from 'antd/lib/tooltip';
 import StyledButton from './StyledButton';
 import Anchor from './Anchor';
-import 'antd/lib/tooltip/style';
 
 function Button({ children, size, styling, handleRoute, linkTo, isActive, href, hasTooltip, tooltipTitle, pointArrowAtCenter, tooltipPlacement, disabled = false}) {
   // Render an anchor tag

@@ -1,10 +1,10 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu as MenuAnt } from 'antd';
 import MenuItem from '../MenuItem';
 import Icon from '../Icon';
 import SubMenu from '../SubMenu';
 import StyledMenu from './StyledMenu';
-import 'antd/lib/menu/style';
 
 export default class Menu extends React.Component{
 
