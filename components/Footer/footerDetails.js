@@ -46,7 +46,7 @@ const footerColumns = [
     title: "Products",
     content: [{
         name: "SDKs",
-        linkTo: "https://mybit.io/developer",
+        linkTo: "https://developer.mybit.io/portal/",
         target: "_top",
       }, {
         name:"MyBit Go",
@@ -70,7 +70,7 @@ const footerColumns = [
         external: true
       }, {
         name:"Whitepaper",
-        linkTo: "https://files.mybit.io/files/MyBit_Whitepaper_v3.0.0.pdf",
+        linkTo: "https://whitepaper.mybit.io/",
         external: true
       },{
         name:"Github",
@@ -175,7 +175,7 @@ const footerDetails = {
       }
     `,
   }, {
-    content: ["Copyright © MyBit Foundation 2018. All Rights Reserved."],
+    content: ["Copyright © MyBit Foundation 2019. All Rights Reserved."],
   }]
 }
 
