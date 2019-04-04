@@ -6,6 +6,7 @@
     "build": "next build",
     "now-build": "npm run build",
     "export": "next export -o build",
+    "lint": "prettier-eslint --write './**/*.js' --ignore './node_modules/**' --ignore './build/**'",
     "now-start": "npm run start",
     "start": "NODE_ENV=production node server.js",
     "start-offline": "OFFLINE=1 node server.js",
@@ -51,6 +52,7 @@
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "jest": "23.6.0",
+    "prettier-eslint-cli": "^4.7.1",
     "mini-css-extract-plugin": "^0.5.0",
     "sinon": "7.1.1"
   }
