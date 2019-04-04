@@ -72,8 +72,8 @@ export default class Home extends React.Component{
       if(this.state.pullingIssues) return;
         this.setState({pullingIssues: true})
       this.getIssues()
-    }, RefreshTimeInSeconds * 1000); 
-    
+    }, RefreshTimeInSeconds * 1000);
+
   }
 
   checkStorageForCurrencyType = () => {
