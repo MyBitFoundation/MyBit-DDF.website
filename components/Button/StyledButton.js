@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from 'antd/lib/button';
 import styled from 'styled-components';
-import 'antd/lib/button/style';
 
 const OverrideStyle = styled.div`
   .ant-btn{

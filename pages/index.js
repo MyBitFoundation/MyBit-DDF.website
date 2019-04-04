@@ -7,7 +7,7 @@ import Stats from '../components/Stats';
 import Bounties from '../components/Bounties';
 import StyledAppWrapper from './StyledAppWrapper';
 import StyledPageContentWrapper from './StyledPageContentWrapper';
-import Footer from '../components/Footer';
+import Footer from '@mybit/ui.footer';
 import StyledRefreshWarning from './StyledRefreshWarning';
 import Welcome from '../components/Welcome';
 import Layout from '../components/Layout';

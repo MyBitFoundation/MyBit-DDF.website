@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Divider } from 'antd';
 import { notification, Switch, Tooltip } from 'antd';
-import 'antd/lib/divider/style/';
 import StyledCard from './StyledCard';
 import StyledCardTime from './StyledCardTime';
 import StyledLabel from './StyledLabel';

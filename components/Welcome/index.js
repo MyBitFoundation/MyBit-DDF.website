@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import StyledWelcome from './StyledWelcome';
 import Button from '../Button';
