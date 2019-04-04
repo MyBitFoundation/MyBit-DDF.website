@@ -1,6 +1,7 @@
-const navigationItems = [{
+const navigationItems = [
+  {
     name: "Developer",
-    linkTo: "https://mybit.io/developer",
+    linkTo: "https://developer.mybit.io/portal/",
     target: "_top",
   }, {
     name: "Fund",
@@ -20,7 +21,7 @@ const navigationItems = [{
         external: true,
       }, {
         name: "Whitepaper",
-        linkTo: "https://files.mybit.io/files/MyBit_Whitepaper_v3.0.0.pdf",
+        linkTo: "https://whitepaper.mybit.io/",
         external: true,
       }, {
         name: "Github",

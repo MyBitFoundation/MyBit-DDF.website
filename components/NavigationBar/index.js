@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import StyledNavigationBar from './StyledNavigationBar';
 import Menu from '../Menu';

@@ -1,6 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Dropdown as DropdownAnt, Icon } from 'antd';
-import 'antd/lib/dropdown/style';
 import StyledDropdown from './StyledDropdown';
 
 const getMenu = (menu, handleClick) => (

@@ -11,3 +11,7 @@
 ## Deploy
 
 `yarn build && yarn export`
+
+## Lint
+
+`yarn lint`
