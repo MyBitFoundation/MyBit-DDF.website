@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
+    "now-build": "npm run build",
     "export": "next export -o build",
+    "now-start": "npm run start",
     "start": "NODE_ENV=production node server.js",
     "start-offline": "OFFLINE=1 node server.js",
     "test": "NODE_ENV=test jest"
