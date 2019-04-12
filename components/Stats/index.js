@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import StyledStats from './StyledStats';
 import StatCard from './StatCard';

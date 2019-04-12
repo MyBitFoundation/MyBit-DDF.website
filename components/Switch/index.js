@@ -1,6 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch as SwitchAnt } from 'antd';
-import 'antd/lib/switch/style';
 import Icon from '../Icon';
 import StyledSwitch from './StyledSwitch';
 

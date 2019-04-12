@@ -9,23 +9,14 @@ jobs:
     steps:
       - checkout
 
-      - run: yarn install
-      
-      - run: yarn test
-      
-      - run: yarn build
-      
-      - run: yarn export
-
       - deploy:
           name: Deploy to Now
           command: |
             GIT_HASH=$(git rev-parse --short HEAD)
             SANITIZED_BRANCH=$(tr "/" "-" <<<$CIRCLE_BRANCH)
             VERY_SANITIZED_BRANCH=$(tr "." "-" <<<$SANITIZED_BRANCH)
-            echo ${GIT_HASH} > build/version
-            cp CONTRIBUTORS build/contributors
-            BUILD_URL=$(npx now --name ddf.mybit.io build -t $NOW_DEVELOPMENT_TOKEN --public)
+            echo ${GIT_HASH} > version
+            BUILD_URL=$(npx now --name ddf.mybit.io -t $NOW_DEVELOPMENT_TOKEN --public)
             npx now alias ${BUILD_URL} \
             ${GIT_HASH}-ddf-mybit-io-dev -t \
             $NOW_DEVELOPMENT_TOKEN

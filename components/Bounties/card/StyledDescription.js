@@ -5,6 +5,7 @@ const StyledDescription = styled.div`
   justify-content: space-between;
   width: 100%;
   padding-top: 15px;
+  flex-direction: column;
 `;
 
 export default StyledDescription;

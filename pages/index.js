@@ -2,13 +2,13 @@ import React from 'react';
 
 import Theme from '../components/Theme';
 import Head from '../index.js'
-import Header from '../components/Header'
 import Stats from '../components/Stats';
 import Bounties from '../components/Bounties';
-import StyledAppWrapper from './StyledAppWrapper';
-import StyledPageContentWrapper from './StyledPageContentWrapper';
-import Footer from '../components/Footer';
-import StyledRefreshWarning from './StyledRefreshWarning';
+import StyledAppWrapper from '../components/StyledAppWrapper';
+import StyledPageContentWrapper from '../components/StyledPageContentWrapper';
+import StyledRefreshWarning from '../components/StyledRefreshWarning';
+import Footer from '@mybit/ui.footer';
+import Header from '@mybit/ui.task-market.header';
 import Welcome from '../components/Welcome';
 import Layout from '../components/Layout';
 import { BountiesPerPage, RefreshTimeInSeconds } from '../constants';
@@ -294,9 +294,9 @@ export default class Home extends React.Component{
               />
               <StyledRefreshWarning>The information on this page refreshes every 30 seconds</StyledRefreshWarning>
             </StyledPageContentWrapper>
-            <Footer
-              styling={Theme.footer}
-            />
+            <div className="center" style={{ maxWidth: 1128, marginTop: 40 }}>
+              <Footer />
+            </div>
           </StyledAppWrapper>
         </Layout>
       </Head>

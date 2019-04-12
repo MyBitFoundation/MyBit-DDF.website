@@ -1,7 +1,7 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import StyledFilter from './StyledFilter';
 import { Tag as TagAnt } from 'antd';
-import 'antd/lib/tag/style';
 const { CheckableTag } = TagAnt;
 
 const Filter = props =>
