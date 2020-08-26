@@ -37,7 +37,7 @@
     "react-placeholder": "3.0.1",
     "react-router-dom": "4.3.1",
     "react-twitter-conversion-tracker": "1.0.0",
-    "styled-components": "3.4.10",
+    "styled-components": "4.2.0",
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.29.6"
   },
@@ -52,8 +52,8 @@
     "enzyme": "3.7.0",
     "enzyme-adapter-react-16": "1.6.0",
     "jest": "23.6.0",
-    "prettier-eslint-cli": "^4.7.1",
     "mini-css-extract-plugin": "^0.5.0",
+    "prettier-eslint-cli": "^4.7.1",
     "sinon": "7.1.1"
   }
 }

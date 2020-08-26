@@ -8,6 +8,10 @@ const StyledFooter = styled.div`
     justify-content: space-between;
     align-items: flex-start;
   }
+
+  a{
+    width: auto;
+  }
 `;
 
 export default StyledFooter;

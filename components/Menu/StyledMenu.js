@@ -1,12 +1,4 @@
-import styled, { injectGlobal } from 'styled-components'
-
-injectGlobal`
-  .ant-menu-vertical{
-    .ant-menu-item{
-      width: 100%;
-    }
-  }
-`
+import styled from 'styled-components'
 
 const StyledMenu = styled.div`
   .ant-menu{

@@ -4,7 +4,7 @@ import {
 } from 'antd';
 
 const StyledSwitch = styled(Switch)`
-  margin-top: 20px;
+  margin-top: 25px;
   display: block;
 
   @media (min-width: 768px) {
